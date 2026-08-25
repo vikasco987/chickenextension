@@ -1,4 +1,17 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Chicken Extension App
+
+Welcome to the **Chicken Extension** web application repository. This is an authentic Mughlai Kitchen ordering and showcase website built using modern web technologies.
+
+## Tech Stack
+- **Framework**: [Next.js](https://nextjs.org/)
+- **Styling**: Vanilla CSS (`globals.css`) with highly customized, premium design tokens
+- **Typography**: Optimized loading of Google Fonts (`Playfair Display`, `Pinyon Script`, and `Poppins`)
+
+## Features
+- **Premium Hero Section**: Features an elegant vintage paper background, seamlessly blended logo, and custom typography to highlight the Authentic Mughlai Experience.
+- **Direct Ordering**: Seamlessly order directly via WhatsApp or call, or jump to delivery apps like Swiggy and Zomato.
+- **Responsive Layout**: Adapts gracefully to all screen sizes, optimizing visual hierarchy on mobile devices.
+- **Micro-interactions**: Enhanced UI components with subtle transitions and rich text-shadows for maximum visual appeal.
 
 ## Getting Started
 
@@ -16,21 +29,8 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project Structure
+- `src/app/page.tsx`: The main landing page component containing the hero section, navigation, and core layout structure.
+- `src/app/globals.css`: Global styles including CSS variables for the color palette, typography styles, and media queries.
+- `src/app/layout.tsx`: The root layout integrating the fonts and global styles.
+- `public/`: Contains static assets like the processed transparent logo and custom generated background imagery.
