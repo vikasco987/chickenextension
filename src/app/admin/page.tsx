@@ -268,8 +268,6 @@ export default function AdminPage() {
               </div>
             ))}
           </div>
-
-          </div>
         </div>
 
         <h2 style={{ marginBottom: '20px', color: '#333' }}>Select Hero Background</h2>
@@ -298,7 +296,6 @@ export default function AdminPage() {
               </div>
             </div>
           ))}
-        </div>
         </div>
       </div>
       
