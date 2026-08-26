@@ -48,6 +48,20 @@ body::before{
     grid-template-columns: 1fr;
     gap: 20px;
   }
+  
+  .mobile-main-logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    margin-top: -15px;
+  }
+  .mobile-huge-logo {
+    width: 200px;
+    height: auto;
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.3));
+    animation: bob 5s ease-in-out infinite;
+  }
+
   .hybrid-spacing {
     margin-top: 10px; /* Push text much higher up on mobile */
   }

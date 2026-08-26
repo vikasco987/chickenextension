@@ -69,6 +69,11 @@ export default function Home() {
           <div className="hero-content-left">
             {!useBakedLayout && (
               <div className={useHybridLayout ? "hero-text text-center hybrid-spacing" : "hero-text"}>
+                {!hideLogo && (
+                  <div className="mobile-main-logo-container mobile-only">
+                    <img src="/chicken-logo-transparent.png" alt="Chicken Extension" className="mobile-huge-logo" />
+                  </div>
+                )}
                 <p className="lede script-lede">Craving something delicious?</p>
                 <h1>AUTHENTIC<br /><span className="exp-block">MUGHLAI EXPERIENCE</span></h1>
 
