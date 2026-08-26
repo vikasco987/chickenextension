@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import HeroWrapper from '../components/HeroWrapper';
+import SplashScreen from '../components/SplashScreen';
 
 export default function Home() {
   const [showFloating, setShowFloating] = useState(false);
@@ -23,6 +24,7 @@ export default function Home() {
 
   return (
     <>
+      <SplashScreen />
       <HeroWrapper>
         {/* Desktop Navbar */}
         <nav className="topbar desktop-only">
