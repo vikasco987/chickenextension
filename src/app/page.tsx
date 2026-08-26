@@ -172,10 +172,10 @@ export default function Home() {
               <p>Experience the best of our kitchen</p>
             </div>
             <div className="sig-grid">
-              <div className="sig-card"><img src="https://images.unsplash.com/photo-1633945274309-2ab7ac1c4a0e?q=80&w=500&auto=format&fit=crop" alt="Kebabs"/><div className="label">Kebabs</div></div>
-              <div className="sig-card"><img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?q=80&w=500&auto=format&fit=crop" alt="Tikkas"/><div className="label">Tikkas</div></div>
-              <div className="sig-card"><img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=500&auto=format&fit=crop" alt="Curries"/><div className="label">Curries</div></div>
-              <div className="sig-card"><img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?q=80&w=500&auto=format&fit=crop" alt="Biryani"/><div className="label">Biryani</div></div>
+              <div className="sig-card"><img src="/images/kebab_platter.png" alt="Kebabs"/><div className="label">Kebabs</div></div>
+              <div className="sig-card"><img src="/images/chicken_tikka.png" alt="Tikkas"/><div className="label">Tikkas</div></div>
+              <div className="sig-card"><img src="/images/chicken_curry.png" alt="Curries"/><div className="label">Curries</div></div>
+              <div className="sig-card"><img src="/images/dum_biryani.png" alt="Biryani"/><div className="label">Biryani</div></div>
             </div>
           </div>
           <div className="welcome-block">
