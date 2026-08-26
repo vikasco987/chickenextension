@@ -158,11 +158,6 @@ body::before{
 
 /* HERO WRAPPER */
 .hero-wrapper { position: relative; }
-.hero-wrapper::before {
-  content:''; position:absolute; top:0; left:0; width:100%; height:180px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 30%, transparent 100%);
-  z-index: 1; pointer-events: none;
-}
 
 /* NAV */
 nav.topbar{
@@ -200,17 +195,19 @@ nav.topbar{
 .btn-order-now:hover{transform:translateY(-2px);}
 
 /* HERO */
-.hero-wrapper {
-  background-image: var(--bg-desktop, url('/images/hero_background_mughlai_1787676838358.png'));
-  background-size: cover;
-  background-position: center top; /* Center is the only way to balance baked logo and food */
-  background-repeat: no-repeat;
+.hero-bg-gradient {
+  background: radial-gradient(circle at center top, var(--cream-2), var(--cream));
   width: 100%;
+  position: relative;
+  overflow: hidden;
 }
-@media (max-width: 900px) {
-  .hero-wrapper {
-    background-image: var(--bg-mobile, var(--bg-desktop));
-  }
+.hero-bg-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: repeating-linear-gradient(45deg, rgba(184,134,59,0.03) 0, rgba(184,134,59,0.03) 2px, transparent 2px, transparent 10px);
+  z-index: 0;
+  pointer-events: none;
 }
 .hero{
   position:relative;
