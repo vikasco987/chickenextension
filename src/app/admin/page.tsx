@@ -130,14 +130,23 @@ export default function AdminPage() {
     };
 
     try {
-      await fetch('/api/settings', {
+      const response = await fetch('/api/settings', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(settings)
       });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        console.error("Save Error:", errorData);
+        alert('Server Error: Failed to save settings. Check browser console for logs.\n\nDetails: ' + (errorData.error || response.statusText) + '\n\nNote: If you are on Vercel, saving to local files is blocked by default.');
+        return;
+      }
+
       alert(`Global Settings Saved successfully!\n\nDesktop: ${bg.name}\nMobile: ${mobBg.name}\nLayout updated automatically.`);
     } catch (e) {
-      alert('Failed to save settings globally.');
+      console.error("Network Error:", e);
+      alert('Failed to save settings globally. Network error occurred.');
     }
   };
 

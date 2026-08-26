@@ -3,7 +3,8 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
-const SETTINGS_FILE = path.join(process.cwd(), 'settings.json');
+const IS_VERCEL = process.env.VERCEL === '1' || process.env.NEXT_PUBLIC_VERCEL_ENV;
+const SETTINGS_FILE = IS_VERCEL ? '/tmp/settings.json' : path.join(process.cwd(), 'settings.json');
 
 const DEFAULT_SETTINGS = {
   bgDesktop: '/images/hero_background_mughlai_1787676838358.png',
@@ -34,6 +35,7 @@ export async function POST(request: Request) {
     fs.writeFileSync(SETTINGS_FILE, JSON.stringify(data, null, 2));
     return NextResponse.json({ success: true });
   } catch (error) {
-    return NextResponse.json({ success: false, error: 'Failed to save settings' }, { status: 500 });
+    console.error("API POST Error:", error);
+    return NextResponse.json({ success: false, error: 'Failed to save settings: ' + String(error) }, { status: 500 });
   }
 }
