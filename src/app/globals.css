@@ -61,7 +61,7 @@ body::before{
     width: auto;
     max-width: 90vw;
     object-fit: contain;
-    filter: brightness(0) drop-shadow(0 15px 25px rgba(0,0,0,0.2));
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.3));
   }
   .hero-text {
     display: flex;
@@ -180,7 +180,6 @@ nav.topbar{
 .huge-logo{
   width: 280px; height: auto;
   margin-top: -10px; margin-left: -20px;
-  filter: brightness(0);
 }
 
 .nav-links{display:flex; gap:34px; list-style:none; margin-top:20px;}
@@ -632,7 +631,7 @@ nav.topbar{
   width: 300px;
   max-width: 90vw;
   height: auto;
-  filter: brightness(0) drop-shadow(0 15px 25px rgba(0,0,0,0.2));
+  filter: drop-shadow(0 15px 25px rgba(0,0,0,0.2));
   animation: splashPulse 2s ease-in-out infinite;
 }
 
