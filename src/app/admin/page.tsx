@@ -81,59 +81,66 @@ const MOBILE_BACKGROUNDS = [
 ];
 
 export default function AdminPage() {
-  const [currentBg, setCurrentBg] = useState<string>("");
-  const [currentMobileBg, setCurrentMobileBg] = useState<string>("");
+  const [selectedBgId, setSelectedBgId] = useState<string>(BACKGROUNDS[0].id);
+  const [selectedMobileBgId, setSelectedMobileBgId] = useState<string>(MOBILE_BACKGROUNDS[0].id);
   const [showFloating, setShowFloating] = useState<boolean>(false);
-  const [useBakedLayout, setUseBakedLayout] = useState<boolean>(false);
   const [hideLogo, setHideLogo] = useState<boolean>(false);
 
   useEffect(() => {
-    const savedBg = localStorage.getItem('chicken-extension-bg') || BACKGROUNDS[0].path;
-    setCurrentBg(savedBg);
-    
-    const savedMobileBg = localStorage.getItem('chicken-extension-bg-mobile') || "/images/hero_mobile.jpg";
-    setCurrentMobileBg(savedMobileBg);
-    
-    const savedFloating = localStorage.getItem('chicken-extension-floating');
-    setShowFloating(savedFloating === 'true');
-
-    const savedBaked = localStorage.getItem('chicken-extension-baked-layout');
-    setUseBakedLayout(savedBaked === 'true');
-
-    const savedHideLogo = localStorage.getItem('chicken-extension-hide-logo');
-    setHideLogo(savedHideLogo === 'true');
+    fetch('/api/settings')
+      .then(res => res.json())
+      .then(data => {
+        if (data.bgDesktop) {
+          const matchedBg = BACKGROUNDS.find(b => b.path === data.bgDesktop);
+          if (matchedBg) setSelectedBgId(matchedBg.id);
+        }
+        if (data.bgMobile) {
+          const matchedMobBg = MOBILE_BACKGROUNDS.find(b => b.path === data.bgMobile);
+          if (matchedMobBg) setSelectedMobileBgId(matchedMobBg.id);
+        }
+        setShowFloating(data.showFloating || false);
+        setHideLogo(data.hideLogo || false);
+      })
+      .catch(console.error);
   }, []);
 
-  const handleSetBackground = (path: string) => {
-    localStorage.setItem('chicken-extension-bg', path);
-    setCurrentBg(path);
-  };
-
-  const handleSetMobileBackground = (path: string, autoHideLogo: boolean) => {
-    localStorage.setItem('chicken-extension-bg-mobile', path);
-    setCurrentMobileBg(path);
+  const handleSave = async (bgId: string) => {
+    const bg = BACKGROUNDS.find(b => b.id === bgId);
+    if (!bg) return;
     
-    // Auto-update hide logo based on image selection
-    setHideLogo(autoHideLogo);
-    localStorage.setItem('chicken-extension-hide-logo', autoHideLogo ? 'true' : 'false');
+    const mobBg = MOBILE_BACKGROUNDS.find(b => b.id === selectedMobileBgId) || BACKGROUNDS[0];
+    
+    // Auto-determine layout
+    const isBaked = bg.path === '/images/hero_baked.jpg' || mobBg.path === '/images/hero_mobile_baked.jpg';
+    const isHybrid = bg.path === '/images/hero_hybrid.jpg';
+
+    const settings = {
+      bgDesktop: bg.path,
+      bgMobile: mobBg.path,
+      showFloating: showFloating,
+      hideLogo: hideLogo || (bg.id === 'bg-baked-custom') || mobBg.hidesLogo,
+      useBakedLayout: isBaked,
+      useHybridLayout: isHybrid
+    };
+
+    try {
+      await fetch('/api/settings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(settings)
+      });
+      alert(`Global Settings Saved successfully!\n\nDesktop: ${bg.name}\nMobile: ${mobBg.name}\nLayout updated automatically.`);
+    } catch (e) {
+      alert('Failed to save settings globally.');
+    }
   };
 
   const handleToggleFloating = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const isChecked = e.target.checked;
-    setShowFloating(isChecked);
-    localStorage.setItem('chicken-extension-floating', isChecked ? 'true' : 'false');
-  };
-
-  const handleToggleBakedLayout = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const isChecked = e.target.checked;
-    setUseBakedLayout(isChecked);
-    localStorage.setItem('chicken-extension-baked-layout', isChecked ? 'true' : 'false');
+    setShowFloating(e.target.checked);
   };
 
   const handleToggleHideLogo = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const isChecked = e.target.checked;
-    setHideLogo(isChecked);
-    localStorage.setItem('chicken-extension-hide-logo', isChecked ? 'true' : 'false');
+    setHideLogo(e.target.checked);
   };
 
   return (
@@ -185,18 +192,6 @@ export default function AdminPage() {
               <span style={{fontSize: '13px', color: '#888'}}>Useful if your background image already has a logo baked into it.</span>
             </div>
           </label>
-          <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', cursor: 'pointer', fontSize: '15px', color: '#555' }}>
-            <input 
-              type="checkbox" 
-              checked={useBakedLayout}
-              onChange={handleToggleBakedLayout}
-              style={{ width: '20px', height: '20px', cursor: 'pointer', flexShrink: 0, marginTop: '2px' }}
-            />
-            <div>
-              <strong>Use "Baked Image" Layout</strong><br/>
-              <span style={{fontSize: '13px', color: '#888'}}>Hides web text completely, expecting text in the background image.</span>
-            </div>
-          </label>
         </div>
 
         <div style={{ marginBottom: '30px', paddingBottom: '20px', borderBottom: '1px solid #eee' }}>
@@ -208,10 +203,10 @@ export default function AdminPage() {
               <div 
                 key={mobBg.id}
                 className="bg-item"
-                onClick={() => handleSetMobileBackground(mobBg.path, mobBg.hidesLogo)}
+                onClick={() => setSelectedMobileBgId(mobBg.id)}
                 style={{
-                  border: `3px solid ${currentMobileBg === mobBg.path ? '#B8863B' : '#eee'}`,
-                  backgroundColor: currentMobileBg === mobBg.path ? '#Fcf9f2' : 'white',
+                  border: `3px solid ${selectedMobileBgId === mobBg.id ? '#B8863B' : '#eee'}`,
+                  backgroundColor: selectedMobileBgId === mobBg.id ? '#Fcf9f2' : 'white',
                   padding: '15px'
                 }}
               >
@@ -219,7 +214,7 @@ export default function AdminPage() {
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', flex: 1 }}>
                   <h3 style={{ margin: '0 0 8px 0', color: '#5C1620', fontSize: '18px' }}>{mobBg.name}</h3>
                   <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>{mobBg.desc}</p>
-                  {currentMobileBg === mobBg.path && (
+                  {selectedMobileBgId === mobBg.id && (
                     <span style={{ marginTop: '12px', color: '#B8863B', fontWeight: 'bold', fontSize: '13px', textTransform: 'uppercase' }}>
                       ✓ Currently Active
                     </span>
@@ -229,19 +224,23 @@ export default function AdminPage() {
             ))}
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <p style={{ fontSize: '13px', color: '#888', margin: 0 }}>Custom Mobile Image URL:</p>
-            <input 
-              type="text" 
-              value={currentMobileBg}
-              onChange={(e) => {
-                const newPath = e.target.value;
-                localStorage.setItem('chicken-extension-bg-mobile', newPath);
-                setCurrentMobileBg(newPath);
+          <div style={{ marginTop: '30px', textAlign: 'center' }}>
+            <button 
+              onClick={() => handleSave(selectedBgId)}
+              style={{ 
+                padding: '15px 40px', 
+                background: '#E48900', 
+                color: 'white', 
+                border: 'none', 
+                borderRadius: '8px',
+                fontSize: '18px',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                boxShadow: '0 4px 15px rgba(228, 137, 0, 0.4)'
               }}
-              style={{ width: '100%', boxSizing: 'border-box', padding: '12px', borderRadius: '8px', border: '1px solid #ccc', fontSize: '15px' }}
-              placeholder="/images/your_mobile_image.jpg"
-            />
+            >
+              Save Global Settings
+            </button>
           </div>
         </div>
 
@@ -252,10 +251,10 @@ export default function AdminPage() {
             <div 
               key={bg.id}
               className="bg-item"
-              onClick={() => handleSetBackground(bg.path)}
+              onClick={() => setSelectedBgId(bg.id)}
               style={{
-                border: `3px solid ${currentBg === bg.path ? '#B8863B' : '#eee'}`,
-                backgroundColor: currentBg === bg.path ? '#Fcf9f2' : 'white'
+                border: `3px solid ${selectedBgId === bg.id ? '#B8863B' : '#eee'}`,
+                backgroundColor: selectedBgId === bg.id ? '#Fcf9f2' : 'white'
               }}
             >
               <div className="bg-preview" style={{ backgroundImage: `url('${bg.path}')` }}></div>
@@ -263,7 +262,7 @@ export default function AdminPage() {
               <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', flex: 1 }}>
                 <h3 style={{ margin: '0 0 8px 0', color: '#5C1620' }}>{bg.name}</h3>
                 <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>{bg.desc}</p>
-                {currentBg === bg.path && (
+                {selectedBgId === bg.id && (
                   <span style={{ marginTop: '12px', color: '#B8863B', fontWeight: 'bold', fontSize: '13px', textTransform: 'uppercase' }}>
                     ✓ Currently Active
                   </span>

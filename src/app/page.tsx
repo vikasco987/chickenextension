@@ -9,27 +9,16 @@ export default function Home() {
   const [hideLogo, setHideLogo] = useState(false);
 
   useEffect(() => {
-    const savedFloating = localStorage.getItem('chicken-extension-floating');
-    if (savedFloating === 'true') {
-      setShowFloating(true);
-    }
-    
-    const savedBg = localStorage.getItem('chicken-extension-bg');
-    const savedBaked = localStorage.getItem('chicken-extension-baked-layout');
-    const savedHideLogo = localStorage.getItem('chicken-extension-hide-logo');
-    
-    // Auto-enable layouts based on background image
-    if (savedBg === '/images/hero_baked.jpg' || savedBaked === 'true') {
-      setUseBakedLayout(true);
-    }
-    
-    if (savedBg === '/images/hero_hybrid.jpg') {
-      setUseHybridLayout(true);
-    }
-
-    if (savedHideLogo === 'true') {
-      setHideLogo(true);
-    }
+    // Fetch global settings
+    fetch('/api/settings')
+      .then(res => res.json())
+      .then(data => {
+        setShowFloating(data.showFloating || false);
+        setHideLogo(data.hideLogo || false);
+        setUseBakedLayout(data.useBakedLayout || false);
+        setUseHybridLayout(data.useHybridLayout || false);
+      })
+      .catch(console.error);
   }, []);
 
   return (
@@ -67,13 +56,13 @@ export default function Home() {
         <div className="hero-grid">
 
           <div className="hero-content-left">
+            {!hideLogo && (
+              <div className="mobile-main-logo-container mobile-only">
+                <img src="/chicken-logo.png" alt="Chicken Extension" className="mobile-huge-logo" />
+              </div>
+            )}
             {!useBakedLayout && (
               <div className={useHybridLayout ? "hero-text text-center hybrid-spacing" : "hero-text"}>
-                {!hideLogo && (
-                  <div className="mobile-main-logo-container mobile-only">
-                    <img src="/chicken-logo.png" alt="Chicken Extension" className="mobile-huge-logo" />
-                  </div>
-                )}
                 <p className="lede script-lede">Craving something delicious?</p>
                 <h1>AUTHENTIC<br /><span className="exp-block">MUGHLAI EXPERIENCE</span></h1>
 

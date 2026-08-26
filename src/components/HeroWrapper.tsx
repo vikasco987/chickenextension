@@ -10,26 +10,15 @@ export default function HeroWrapper({ children }: { children: React.ReactNode })
   const [showFloating, setShowFloating] = useState<boolean>(false);
 
   useEffect(() => {
-    // Read from localStorage on mount
-    const savedBg = localStorage.getItem('chicken-extension-bg');
-    if (savedBg) {
-      setBgImage(savedBg);
-    }
-    
-    // Check if user set a specific mobile bg
-    const savedMobileBg = localStorage.getItem('chicken-extension-bg-mobile');
-    if (savedMobileBg) {
-      setBgImageMobile(savedMobileBg);
-    } else if (savedBg) {
-      // Fallback: if no mobile bg is set, but desktop is set, use desktop for mobile too temporarily
-      setBgImageMobile(savedBg);
-    }
-
-    // Check if floating design is enabled
-    const isFloating = localStorage.getItem('chicken-extension-show-floating');
-    if (isFloating === 'true') {
-      setShowFloating(true);
-    }
+    // Fetch global settings on mount
+    fetch('/api/settings')
+      .then(res => res.json())
+      .then(data => {
+        if (data.bgDesktop) setBgImage(data.bgDesktop);
+        if (data.bgMobile) setBgImageMobile(data.bgMobile);
+        if (data.showFloating) setShowFloating(true);
+      })
+      .catch(console.error);
   }, []);
 
   return (

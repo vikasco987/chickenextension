@@ -52,14 +52,16 @@ body::before{
   .mobile-main-logo-container {
     display: flex;
     justify-content: center;
-    margin-bottom: 25px;
-    margin-top: -15px;
+    margin-bottom: 15px;
+    margin-top: 0;
+    width: 100%;
   }
   .mobile-huge-logo {
-    width: 200px;
+    width: 280px;
+    max-width: 85vw;
     height: auto;
     filter: drop-shadow(0 15px 25px rgba(0,0,0,0.3));
-    animation: bob 5s ease-in-out infinite;
+    /* Removed floating animation as requested */
   }
 
   .hybrid-spacing {
