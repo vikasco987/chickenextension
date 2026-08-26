@@ -42,6 +42,23 @@ const BACKGROUNDS = [
   }
 ];
 
+const MOBILE_BACKGROUNDS = [
+  {
+    id: "mob-clean",
+    name: "Clean Parchment (No Logo)",
+    path: "/images/hero_mobile_clean.jpg",
+    desc: "A clean mobile layout. Logo is provided by the black navbar.",
+    hidesLogo: false
+  },
+  {
+    id: "mob-baked",
+    name: "Fully Baked Mobile (With Logo)",
+    path: "/images/hero_mobile_baked.jpg",
+    desc: "The logo is built directly into this image. Automatically hides the HTML logo.",
+    hidesLogo: true
+  }
+];
+
 export default function AdminPage() {
   const [currentBg, setCurrentBg] = useState<string>("");
   const [currentMobileBg, setCurrentMobileBg] = useState<string>("");
@@ -71,9 +88,13 @@ export default function AdminPage() {
     setCurrentBg(path);
   };
 
-  const handleSetMobileBackground = (path: string) => {
+  const handleSetMobileBackground = (path: string, autoHideLogo: boolean) => {
     localStorage.setItem('chicken-extension-bg-mobile', path);
     setCurrentMobileBg(path);
+    
+    // Auto-update hide logo based on image selection
+    setHideLogo(autoHideLogo);
+    localStorage.setItem('chicken-extension-hide-logo', autoHideLogo ? 'true' : 'false');
   };
 
   const handleToggleFloating = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -159,22 +180,48 @@ export default function AdminPage() {
 
         <div style={{ marginBottom: '30px', paddingBottom: '20px', borderBottom: '1px solid #eee' }}>
           <h2 style={{ margin: '0 0 10px 0', color: '#333' }}>Mobile Specific Settings</h2>
-          <p style={{ color: '#666', marginBottom: '15px' }}>Enter the path to your mobile background image. The mobile layout expects the logo in the top black navbar, so the image should NOT have a logo baked in.</p>
+          <p style={{ color: '#666', marginBottom: '15px' }}>Select a mobile background. Some images have the logo baked in, which will automatically hide the HTML logo.</p>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', marginBottom: '20px' }}>
+            {MOBILE_BACKGROUNDS.map((mobBg) => (
+              <div 
+                key={mobBg.id}
+                className="bg-item"
+                onClick={() => handleSetMobileBackground(mobBg.path, mobBg.hidesLogo)}
+                style={{
+                  border: `3px solid ${currentMobileBg === mobBg.path ? '#B8863B' : '#eee'}`,
+                  backgroundColor: currentMobileBg === mobBg.path ? '#Fcf9f2' : 'white',
+                  padding: '15px'
+                }}
+              >
+                <div className="bg-preview" style={{ backgroundImage: `url('${mobBg.path}')`, width: '100px', height: '150px' }}></div>
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', flex: 1 }}>
+                  <h3 style={{ margin: '0 0 8px 0', color: '#5C1620', fontSize: '18px' }}>{mobBg.name}</h3>
+                  <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>{mobBg.desc}</p>
+                  {currentMobileBg === mobBg.path && (
+                    <span style={{ marginTop: '12px', color: '#B8863B', fontWeight: 'bold', fontSize: '13px', textTransform: 'uppercase' }}>
+                      ✓ Currently Active
+                    </span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <p style={{ fontSize: '13px', color: '#888', margin: 0 }}>Custom Mobile Image URL:</p>
             <input 
               type="text" 
               value={currentMobileBg}
-              onChange={(e) => handleSetMobileBackground(e.target.value)}
+              onChange={(e) => {
+                const newPath = e.target.value;
+                localStorage.setItem('chicken-extension-bg-mobile', newPath);
+                setCurrentMobileBg(newPath);
+              }}
               style={{ width: '100%', boxSizing: 'border-box', padding: '12px', borderRadius: '8px', border: '1px solid #ccc', fontSize: '15px' }}
               placeholder="/images/your_mobile_image.jpg"
             />
           </div>
-          {currentMobileBg && (
-            <div style={{ marginTop: '15px' }}>
-              <p style={{ fontSize: '13px', color: '#888', marginBottom: '5px' }}>Mobile Background Preview:</p>
-              <img src={currentMobileBg} alt="Mobile Bg Preview" style={{ width: '100%', maxWidth: '200px', height: 'auto', borderRadius: '8px', objectFit: 'cover', border: '1px solid #ddd' }} />
-            </div>
-          )}
         </div>
 
         <h2 style={{ marginBottom: '20px', color: '#333' }}>Select Hero Background</h2>
