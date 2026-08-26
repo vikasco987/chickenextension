@@ -172,10 +172,10 @@ export default function Home() {
               <p>Experience the best of our kitchen</p>
             </div>
             <div className="sig-grid">
-              <div className="sig-card"><img src="/images/kebab_platter.png" alt="Kebabs"/><div className="label">Kebabs</div></div>
-              <div className="sig-card"><img src="/images/chicken_tikka.png" alt="Tikkas"/><div className="label">Tikkas</div></div>
-              <div className="sig-card"><img src="/images/chicken_curry.png" alt="Curries"/><div className="label">Curries</div></div>
-              <div className="sig-card"><img src="/images/dum_biryani.png" alt="Biryani"/><div className="label">Biryani</div></div>
+              <div className="sig-card"><img src="/kebab_platter.png" alt="Kebabs"/><div className="label">Kebabs</div></div>
+              <div className="sig-card"><img src="/chicken_tikka.png" alt="Tikkas"/><div className="label">Tikkas</div></div>
+              <div className="sig-card"><img src="/chicken_curry.png" alt="Curries"/><div className="label">Curries</div></div>
+              <div className="sig-card"><img src="/dum_biryani.png" alt="Biryani"/><div className="label">Biryani</div></div>
             </div>
           </div>
           <div className="welcome-block">
