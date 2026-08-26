@@ -108,7 +108,7 @@ export default function AdminPage() {
     const bg = BACKGROUNDS.find(b => b.id === bgId);
     if (!bg) return;
     
-    const mobBg = MOBILE_BACKGROUNDS.find(b => b.id === selectedMobileBgId) || BACKGROUNDS[0];
+    const mobBg = MOBILE_BACKGROUNDS.find(b => b.id === selectedMobileBgId) || MOBILE_BACKGROUNDS[0];
     
     // Auto-determine layout
     const isBaked = bg.path === '/images/hero_baked.jpg' || mobBg.path === '/images/hero_mobile_baked.jpg';
