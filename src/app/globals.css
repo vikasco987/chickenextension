@@ -57,10 +57,11 @@ body::before{
     width: 100%;
   }
   .mobile-huge-logo {
-    height: 90px;
+    height: 130px;
     width: auto;
+    max-width: 90vw;
     object-fit: contain;
-    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.3));
+    filter: brightness(0) drop-shadow(0 15px 25px rgba(0,0,0,0.2));
   }
   .hero-text {
     display: flex;
@@ -177,8 +178,9 @@ nav.topbar{
 }
 .brand{ position:relative; }
 .huge-logo{
-  width:220px; height:auto;
-  margin-top:-10px; margin-left:-20px;
+  width: 280px; height: auto;
+  margin-top: -10px; margin-left: -20px;
+  filter: brightness(0);
 }
 
 .nav-links{display:flex; gap:34px; list-style:none; margin-top:20px;}
@@ -627,10 +629,10 @@ nav.topbar{
 }
 
 .splash-logo {
-  width: 250px;
-  max-width: 80vw;
+  width: 300px;
+  max-width: 90vw;
   height: auto;
-  filter: drop-shadow(0 15px 25px rgba(0,0,0,0.2));
+  filter: brightness(0) drop-shadow(0 15px 25px rgba(0,0,0,0.2));
   animation: splashPulse 2s ease-in-out infinite;
 }
 
