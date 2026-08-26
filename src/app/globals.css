@@ -46,16 +46,23 @@ body::before{
   
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 20px;
   }
   .hybrid-spacing {
-    margin-top: 80px; /* Less margin on mobile */
+    margin-top: 10px; /* Push text much higher up on mobile */
   }
   .hero-text h1 .exp-block {
-    font-size: clamp(32px, 8vw, 48px);
+    font-size: clamp(28px, 7vw, 42px); /* Slightly smaller on mobile to prevent bleed */
   }
   .order-now-heading h2 {
-    font-size: 28px;
+    font-size: 24px;
+  }
+  .hero-text p.lede {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  .tagline {
+    margin: 15px 0;
   }
   .hero-wrapper {
     background-position: center top; /* Anchor mobile portrait images to top so they don't clip */
