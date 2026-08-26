@@ -36,8 +36,8 @@ export default function HeroWrapper({ children }: { children: React.ReactNode })
     <div 
       className="hero-wrapper" 
       style={{
-        '--bg-desktop': `url('${bgImage}')`,
-        '--bg-mobile': showFloating ? 'none' : `url('${bgImageMobile}')`,
+        '--bg-desktop': bgImage === 'none' ? 'none' : `url('${bgImage}')`,
+        '--bg-mobile': showFloating || bgImageMobile === 'none' ? 'none' : `url('${bgImageMobile}')`,
         transition: "background-image 0.5s ease-in-out"
       } as React.CSSProperties}
     >

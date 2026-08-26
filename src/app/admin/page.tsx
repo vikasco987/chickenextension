@@ -44,6 +44,20 @@ const BACKGROUNDS = [
 
 const MOBILE_BACKGROUNDS = [
   {
+    id: "mob-none",
+    name: "No Image (Solid Color)",
+    path: "none",
+    desc: "A completely clean canvas with no background image, perfect for floating designs.",
+    hidesLogo: false
+  },
+  {
+    id: "mob-marble",
+    name: "Luxury Marble Feast",
+    path: "/images/hero_mobile_marble.jpg",
+    desc: "Top half is clean white marble, bottom half is a photorealistic Mughlai feast. Very premium.",
+    hidesLogo: false
+  },
+  {
     id: "mob-generated",
     name: "AI Perfected Mobile (Recommended)",
     path: "/images/hero_mobile_generated.jpg",
