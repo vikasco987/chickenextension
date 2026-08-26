@@ -57,7 +57,7 @@ body::before{
     width: 100%;
   }
   .mobile-huge-logo {
-    height: 130px;
+    height: 160px;
     width: auto;
     max-width: 90vw;
     object-fit: contain;
