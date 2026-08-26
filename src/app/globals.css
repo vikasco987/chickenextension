@@ -58,7 +58,7 @@ body::before{
     font-size: 28px;
   }
   .hero-wrapper {
-    background-position: left center; /* On mobile, let it focus slightly lower so logo isn't totally dominant */
+    background-position: center top; /* Anchor mobile portrait images to top so they don't clip */
   }
 }
 
