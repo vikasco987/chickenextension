@@ -57,12 +57,10 @@ export default function Home() {
       <section className="hero">
         <div className="hero-grid">
 
-          <div className="hero-content-left">
-            {!hideLogo && (
-              <div className="mobile-main-logo-container mobile-only">
-                <img src="/chicken-logo.png" alt="Chicken Extension" className="mobile-huge-logo" />
-              </div>
-            )}
+          <div className="hero-content-left relative z-10 pt-4 sm:pt-8">
+            <div className="mobile-main-logo-container mobile-only">
+              <img src="/chicken-logo-transparent.png" alt="Chicken Extension" className="mobile-huge-logo" />
+            </div>
             {!useBakedLayout && (
               <div className={useHybridLayout ? "hero-text text-center hybrid-spacing" : "hero-text"}>
                 <p className="lede script-lede">Craving something delicious?</p>
