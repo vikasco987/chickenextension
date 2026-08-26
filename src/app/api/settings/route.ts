@@ -12,6 +12,8 @@ const DEFAULT_SETTINGS = {
   hideLogo: false,
   useBakedLayout: false,
   useHybridLayout: false,
+  logoSizeDesktop: 280,
+  logoSizeMobile: 180,
 };
 
 export async function GET() {

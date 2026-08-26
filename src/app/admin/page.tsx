@@ -85,6 +85,8 @@ export default function AdminPage() {
   const [selectedMobileBgId, setSelectedMobileBgId] = useState<string>(MOBILE_BACKGROUNDS[0].id);
   const [showFloating, setShowFloating] = useState<boolean>(false);
   const [hideLogo, setHideLogo] = useState<boolean>(false);
+  const [logoSizeDesktop, setLogoSizeDesktop] = useState<number>(280);
+  const [logoSizeMobile, setLogoSizeMobile] = useState<number>(180);
 
   useEffect(() => {
     fetch('/api/settings?t=' + new Date().getTime(), { cache: 'no-store' })
@@ -100,6 +102,8 @@ export default function AdminPage() {
         }
         setShowFloating(data.showFloating || false);
         setHideLogo(data.hideLogo || false);
+        setLogoSizeDesktop(data.logoSizeDesktop || 280);
+        setLogoSizeMobile(data.logoSizeMobile || 180);
       })
       .catch(console.error);
   }, []);
@@ -120,7 +124,9 @@ export default function AdminPage() {
       showFloating: showFloating,
       hideLogo: hideLogo || (bg.id === 'bg-baked-custom') || mobBg.hidesLogo,
       useBakedLayout: isBaked,
-      useHybridLayout: isHybrid
+      useHybridLayout: isHybrid,
+      logoSizeDesktop: logoSizeDesktop,
+      logoSizeMobile: logoSizeMobile
     };
 
     try {
@@ -192,6 +198,36 @@ export default function AdminPage() {
               <span style={{fontSize: '13px', color: '#888'}}>Useful if your background image already has a logo baked into it.</span>
             </div>
           </label>
+        </div>
+
+        <div style={{ marginBottom: '30px', paddingBottom: '20px', borderBottom: '1px solid #eee' }}>
+          <h2 style={{ margin: '0 0 10px 0', color: '#333' }}>Logo Settings</h2>
+          
+          <div style={{ marginBottom: '15px' }}>
+            <label style={{ display: 'block', marginBottom: '8px', fontSize: '15px', color: '#555', fontWeight: 'bold' }}>
+              Desktop Logo Width ({logoSizeDesktop}px)
+            </label>
+            <input 
+              type="range" 
+              min="100" max="600" step="10"
+              value={logoSizeDesktop} 
+              onChange={(e) => setLogoSizeDesktop(Number(e.target.value))}
+              style={{ width: '100%', cursor: 'pointer' }}
+            />
+          </div>
+
+          <div>
+            <label style={{ display: 'block', marginBottom: '8px', fontSize: '15px', color: '#555', fontWeight: 'bold' }}>
+              Mobile Logo Height ({logoSizeMobile}px)
+            </label>
+            <input 
+              type="range" 
+              min="80" max="300" step="10"
+              value={logoSizeMobile} 
+              onChange={(e) => setLogoSizeMobile(Number(e.target.value))}
+              style={{ width: '100%', cursor: 'pointer' }}
+            />
+          </div>
         </div>
 
         <div style={{ marginBottom: '30px', paddingBottom: '20px', borderBottom: '1px solid #eee' }}>

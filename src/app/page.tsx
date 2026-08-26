@@ -8,6 +8,8 @@ export default function Home() {
   const [useBakedLayout, setUseBakedLayout] = useState(false);
   const [useHybridLayout, setUseHybridLayout] = useState(false);
   const [hideLogo, setHideLogo] = useState(false);
+  const [logoSizeDesktop, setLogoSizeDesktop] = useState(280);
+  const [logoSizeMobile, setLogoSizeMobile] = useState(160);
 
   useEffect(() => {
     // Fetch global settings
@@ -18,6 +20,8 @@ export default function Home() {
         setHideLogo(data.hideLogo || false);
         setUseBakedLayout(data.useBakedLayout || false);
         setUseHybridLayout(data.useHybridLayout || false);
+        setLogoSizeDesktop(data.logoSizeDesktop || 280);
+        setLogoSizeMobile(data.logoSizeMobile || 160);
       })
       .catch(console.error);
   }, []);
@@ -30,7 +34,7 @@ export default function Home() {
         <nav className="topbar desktop-only">
         {!useBakedLayout && !useHybridLayout && !hideLogo && (
           <div className="brand">
-            <img src="/chicken-logo.png" alt="Chicken Extension Logo" className="huge-logo" />
+            <img src="/chicken-logo-transparent.png" alt="Chicken Extension Logo" className="huge-logo" style={{ width: `${logoSizeDesktop}px` }} />
           </div>
         )}
         <ul className="nav-links">
@@ -59,7 +63,7 @@ export default function Home() {
 
           <div className="hero-content-left relative z-10 pt-4 sm:pt-8">
             <div className="mobile-main-logo-container mobile-only">
-              <img src="/chicken-logo-transparent.png" alt="Chicken Extension" className="mobile-huge-logo" />
+              <img src="/chicken-logo-transparent.png" alt="Chicken Extension" className="mobile-huge-logo" style={{ height: `${logoSizeMobile}px` }} />
             </div>
             {!useBakedLayout && (
               <div className={useHybridLayout ? "hero-text text-center hybrid-spacing" : "hero-text"}>
