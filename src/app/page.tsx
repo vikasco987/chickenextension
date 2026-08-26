@@ -11,7 +11,7 @@ export default function Home() {
 
   useEffect(() => {
     // Fetch global settings
-    fetch('/api/settings')
+    fetch('/api/settings?t=' + new Date().getTime(), { cache: 'no-store' })
       .then(res => res.json())
       .then(data => {
         setShowFloating(data.showFloating || false);

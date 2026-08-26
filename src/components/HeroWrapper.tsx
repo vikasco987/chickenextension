@@ -11,7 +11,7 @@ export default function HeroWrapper({ children }: { children: React.ReactNode })
 
   useEffect(() => {
     // Fetch global settings on mount
-    fetch('/api/settings')
+    fetch('/api/settings?t=' + new Date().getTime(), { cache: 'no-store' })
       .then(res => res.json())
       .then(data => {
         if (data.bgDesktop) setBgImage(data.bgDesktop);

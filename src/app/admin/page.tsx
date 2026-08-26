@@ -87,7 +87,7 @@ export default function AdminPage() {
   const [hideLogo, setHideLogo] = useState<boolean>(false);
 
   useEffect(() => {
-    fetch('/api/settings')
+    fetch('/api/settings?t=' + new Date().getTime(), { cache: 'no-store' })
       .then(res => res.json())
       .then(data => {
         if (data.bgDesktop) {
