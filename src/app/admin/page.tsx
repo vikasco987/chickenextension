@@ -44,6 +44,13 @@ const BACKGROUNDS = [
 
 const MOBILE_BACKGROUNDS = [
   {
+    id: "mob-generated",
+    name: "AI Perfected Mobile (Recommended)",
+    path: "/images/hero_mobile_generated.jpg",
+    desc: "Custom generated with empty parchment at the top and beautiful Mughlai food at the bottom. The HTML logo remains visible in the black navbar.",
+    hidesLogo: false
+  },
+  {
     id: "mob-clean",
     name: "Clean Parchment (No Logo)",
     path: "/images/hero_mobile_clean.jpg",
