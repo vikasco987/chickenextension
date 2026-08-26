@@ -269,23 +269,6 @@ export default function AdminPage() {
             ))}
           </div>
 
-          <div style={{ marginTop: '30px', textAlign: 'center' }}>
-            <button 
-              onClick={() => handleSave(selectedBgId)}
-              style={{ 
-                padding: '15px 40px', 
-                background: '#E48900', 
-                color: 'white', 
-                border: 'none', 
-                borderRadius: '8px',
-                fontSize: '18px',
-                fontWeight: 'bold',
-                cursor: 'pointer',
-                boxShadow: '0 4px 15px rgba(228, 137, 0, 0.4)'
-              }}
-            >
-              Save Global Settings
-            </button>
           </div>
         </div>
 
@@ -316,7 +299,41 @@ export default function AdminPage() {
             </div>
           ))}
         </div>
+        </div>
       </div>
+      
+      {/* Sticky Save Button Container */}
+      <div style={{
+        position: 'fixed', bottom: 0, left: 0, right: 0, 
+        background: 'rgba(255,255,255,0.95)', 
+        padding: '15px', 
+        borderTop: '1px solid #ddd', 
+        textAlign: 'center',
+        boxShadow: '0 -4px 15px rgba(0,0,0,0.1)',
+        zIndex: 1000,
+        backdropFilter: 'blur(5px)'
+      }}>
+        <button 
+          onClick={() => handleSave(selectedBgId)}
+          style={{ 
+            padding: '15px 50px', 
+            background: '#5C1620', 
+            color: 'white', 
+            border: 'none', 
+            borderRadius: '12px',
+            fontSize: '20px',
+            fontWeight: 'bold',
+            cursor: 'pointer',
+            boxShadow: '0 4px 15px rgba(92, 22, 32, 0.4)',
+            transition: 'all 0.2s ease'
+          }}
+          onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+          onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+        >
+          💾 Save All Settings
+        </button>
+      </div>
+      <div style={{ height: '80px' }}></div> {/* Spacer for sticky footer */}
     </div>
     </>
   );
