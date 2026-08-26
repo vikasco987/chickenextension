@@ -1,13 +1,41 @@
-import React from 'react';
+"use client";
+import React, { useState, useEffect } from 'react';
+import HeroWrapper from '../components/HeroWrapper';
 
 export default function Home() {
+  const [showFloating, setShowFloating] = useState(false);
+  const [useBakedLayout, setUseBakedLayout] = useState(false);
+  const [useHybridLayout, setUseHybridLayout] = useState(false);
+
+  useEffect(() => {
+    const savedFloating = localStorage.getItem('chicken-extension-floating');
+    if (savedFloating === 'true') {
+      setShowFloating(true);
+    }
+    
+    const savedBg = localStorage.getItem('chicken-extension-bg');
+    const savedBaked = localStorage.getItem('chicken-extension-baked-layout');
+    
+    // Auto-enable layouts based on background image
+    if (savedBg === '/images/hero_baked.jpg' || savedBaked === 'true') {
+      setUseBakedLayout(true);
+    }
+    
+    if (savedBg === '/images/hero_hybrid.jpg') {
+      setUseHybridLayout(true);
+    }
+  }, []);
+
   return (
     <>
-      <div className="hero-wrapper" style={{backgroundImage: "url('/images/hero_bg_balanced_1787678010249.png')", backgroundSize: "cover", backgroundPosition: "center top"}}>
-        <nav className="topbar">
-        <div className="brand">
-          <img src="/chicken-logo-transparent.png" alt="Chicken Extension Logo" className="huge-logo" />
-        </div>
+      <HeroWrapper>
+        {/* Desktop Navbar */}
+        <nav className="topbar desktop-only">
+        {!useBakedLayout && !useHybridLayout && (
+          <div className="brand">
+            <img src="/chicken-logo.png" alt="Chicken Extension Logo" className="huge-logo" />
+          </div>
+        )}
         <ul className="nav-links">
           <li><a href="#" className="active">Home</a></li>
           <li><a href="#">Our Story</a></li>
@@ -20,27 +48,43 @@ export default function Home() {
         <a href="#" className="btn-order-now">Order Now</a>
       </nav>
 
+      {/* Mobile Navbar */}
+      <nav className="mobile-topbar mobile-only">
+        <button className="hamburger">☰</button>
+        <div className="mobile-brand">
+          <img src="/chicken-logo.png" alt="Chicken Extension Logo" />
+        </div>
+        <a href="tel:+919315225535" className="mobile-call-icon">📞</a>
+      </nav>
+
       <section className="hero">
         <div className="hero-grid">
 
-          <div className="hero-text">
-            <span className="script">Authentic</span>
-            <h1>MUGHLAI<span className="exp">Experience</span></h1>
+          <div className="hero-content-left">
+            {!useBakedLayout && (
+              <div className={useHybridLayout ? "hero-text text-center hybrid-spacing" : "hero-text"}>
+                <p className="lede script-lede">Craving something delicious?</p>
+                <h1>AUTHENTIC<br /><span className="exp-block">MUGHLAI EXPERIENCE</span></h1>
 
-            <div className="tagline">
-              <span>Kebabs</span><span className="sep">·</span><span>Tikkas</span><span className="sep">·</span><span>Curries</span><span className="sep">·</span><span>Biryani</span>
-            </div>
+                <div className="tagline center-tagline">
+                  <span>Kebabs</span><span className="sep">·</span><span>Tikkas</span><span className="sep">·</span><span>Curries</span><span className="sep">·</span><span>Biryani</span>
+                </div>
+                
+                <div className="order-now-heading">
+                  <span className="ornament"></span>
+                  <h2>ORDER NOW</h2>
+                  <span className="ornament"></span>
+                </div>
+              </div>
+            )}
 
-            <p className="lede">Craving something delicious?</p>
-            <h2 className="cta-label">Order Now</h2>
-
-            <div className="order-card">
-              <div className="order-divider">Order Directly</div>
+            <div className={(useBakedLayout || useHybridLayout) ? "baked-order-card" : "order-card"} style={{ marginTop: useBakedLayout ? '330px' : (useHybridLayout ? '20px' : '0') }}>
+              {!useBakedLayout && <div className="order-divider">Order Directly</div>}
               <div className="direct-row">
                 <a href="https://wa.me/919315225535" target="_blank" rel="noopener" className="order-btn btn-whatsapp">💬 WhatsApp</a>
                 <a href="tel:+919315225535" className="order-btn btn-call">📞 Call Now</a>
               </div>
-              <div className="order-divider">Order On Delivery Apps</div>
+              {!useBakedLayout && <div className="order-divider">Order On Delivery Apps</div>}
               <div className="app-row">
                 <a href="https://www.swiggy.com/" target="_blank" rel="noopener" className="app-btn app-swiggy">Swiggy</a>
                 <a href="https://www.zomato.com/" target="_blank" rel="noopener" className="app-btn app-zomato">Zomato</a>
@@ -50,21 +94,35 @@ export default function Home() {
           </div>
 
           <div className="hero-visual">
-            <div className="collage-img ci-main"><img src="/images/mughlai_curry_bowl_1787676794438.png" alt="Butter chicken curry" /></div>
-            <div className="collage-img ci-side"><img src="/images/mughlai_thali_1787676811246.png" alt="Mughlai thali" /></div>
-            <div className="float-badge fb-top">
-              <div className="photo"><img src="/images/seekh_kebab_skewers_1787676824584.png" alt="Seekh kebab skewers" /></div>
-              <div><div className="t">Best Seller</div><div className="v">Seekh Kebab</div></div>
-            </div>
-            <div className="rating-badge">
-              <span className="stars">★★★★★</span>
-              <div><div className="num">4.7</div><div className="lab">Google Rating</div></div>
-            </div>
+            {showFloating && (
+              <>
+                <div className="collage-img ci-main"><img src="/images/mughlai_curry_bowl_1787676794438.png" alt="Butter chicken curry" /></div>
+                <div className="collage-img ci-side"><img src="/images/mughlai_thali_1787676811246.png" alt="Mughlai thali" /></div>
+                <div className="float-badge fb-top">
+                  <div className="photo"><img src="/images/seekh_kebab_skewers_1787676824584.png" alt="Seekh kebab skewers" /></div>
+                  <div><div className="t">Best Seller</div><div className="v">Seekh Kebab</div></div>
+                </div>
+                <div className="rating-badge">
+                  <span className="stars">★★★★★</span>
+                  <div><div className="num">4.7</div><div className="lab">Google Rating</div></div>
+                  <div className="v">4.9/5</div>
+                </div>
+              </>
+            )}
           </div>
 
         </div>
       </section>
-    </div>
+      </HeroWrapper>
+
+      {/* Mobile Sticky Bottom Navbar */}
+      <div className="mobile-bottom-nav mobile-only">
+        <a href="https://wa.me/919315225535" className="nav-btn btn-wa"><div>💬</div><div>WhatsApp</div></a>
+        <a href="tel:+919315225535" className="nav-btn btn-call"><div>📞</div><div>Call Now</div></a>
+        <a href="#" className="nav-btn btn-swiggy"><div>🛵</div><div>Swiggy</div></a>
+        <a href="#" className="nav-btn btn-zomato"><div>🏍️</div><div>Zomato</div></a>
+        <a href="#" className="nav-btn btn-toing"><div>🚀</div><div>Toing</div></a>
+      </div>
 
       <div className="wrap">
         <section className="review-banner">
