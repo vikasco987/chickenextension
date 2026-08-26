@@ -47,6 +47,7 @@ export default function AdminPage() {
   const [currentMobileBg, setCurrentMobileBg] = useState<string>("");
   const [showFloating, setShowFloating] = useState<boolean>(false);
   const [useBakedLayout, setUseBakedLayout] = useState<boolean>(false);
+  const [hideLogo, setHideLogo] = useState<boolean>(false);
 
   useEffect(() => {
     const savedBg = localStorage.getItem('chicken-extension-bg') || BACKGROUNDS[0].path;
@@ -60,6 +61,9 @@ export default function AdminPage() {
 
     const savedBaked = localStorage.getItem('chicken-extension-baked-layout');
     setUseBakedLayout(savedBaked === 'true');
+
+    const savedHideLogo = localStorage.getItem('chicken-extension-hide-logo');
+    setHideLogo(savedHideLogo === 'true');
   }, []);
 
   const handleSetBackground = (path: string) => {
@@ -84,16 +88,37 @@ export default function AdminPage() {
     localStorage.setItem('chicken-extension-baked-layout', isChecked ? 'true' : 'false');
   };
 
+  const handleToggleHideLogo = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const isChecked = e.target.checked;
+    setHideLogo(isChecked);
+    localStorage.setItem('chicken-extension-hide-logo', isChecked ? 'true' : 'false');
+  };
+
   return (
-    <div style={{ padding: '40px', maxWidth: '800px', margin: '0 auto', fontFamily: 'sans-serif' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
-        <h1 style={{ color: '#5C1620' }}>Admin Panel: Hero Settings</h1>
+    <>
+    <style dangerouslySetInnerHTML={{__html: `
+      .admin-container { padding: 40px; max-width: 800px; margin: 0 auto; font-family: sans-serif; }
+      .admin-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+      .bg-item { display: flex; gap: 20px; padding: 20px; border-radius: 12px; cursor: pointer; transition: all 0.2s; }
+      .bg-preview { width: 150px; height: 100px; border-radius: 8px; background-size: cover; background-position: center; flex-shrink: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+      
+      @media (max-width: 768px) {
+        .admin-container { padding: 15px; }
+        .admin-card { padding: 15px; }
+        .bg-item { flex-direction: column; }
+        .bg-preview { width: 100%; height: 180px; }
+        .admin-header { flex-direction: column; gap: 15px; align-items: flex-start !important; }
+      }
+    `}} />
+    <div className="admin-container">
+      <div className="admin-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
+        <h1 style={{ color: '#5C1620', fontSize: '24px', margin: 0 }}>Admin Panel: Settings</h1>
         <Link href="/" style={{ padding: '10px 20px', background: '#5C1620', color: 'white', textDecoration: 'none', borderRadius: '8px' }}>
           View Live Site
         </Link>
       </div>
 
-      <div style={{ background: 'white', padding: '30px', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
+      <div className="admin-card">
         
         <div style={{ marginBottom: '30px', paddingBottom: '20px', borderBottom: '1px solid #eee' }}>
           <h2 style={{ margin: '0 0 10px 0', color: '#333' }}>Layout Options</h2>
@@ -106,33 +131,48 @@ export default function AdminPage() {
             />
             Show Floating Food Collage (Circular Images)
           </label>
-          <label style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', fontSize: '16px', color: '#555' }}>
+          <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', cursor: 'pointer', fontSize: '15px', color: '#555', marginBottom: '12px' }}>
+            <input 
+              type="checkbox" 
+              checked={hideLogo}
+              onChange={handleToggleHideLogo}
+              style={{ width: '20px', height: '20px', cursor: 'pointer', flexShrink: 0, marginTop: '2px' }}
+            />
+            <div>
+              <strong>Hide HTML Logo Everywhere</strong><br/>
+              <span style={{fontSize: '13px', color: '#888'}}>Useful if your background image already has a logo baked into it.</span>
+            </div>
+          </label>
+          <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', cursor: 'pointer', fontSize: '15px', color: '#555' }}>
             <input 
               type="checkbox" 
               checked={useBakedLayout}
               onChange={handleToggleBakedLayout}
-              style={{ width: '20px', height: '20px', cursor: 'pointer' }}
+              style={{ width: '20px', height: '20px', cursor: 'pointer', flexShrink: 0, marginTop: '2px' }}
             />
-            Use "Baked Image" Layout (Hides web text/logo expecting them in the image)
+            <div>
+              <strong>Use "Baked Image" Layout</strong><br/>
+              <span style={{fontSize: '13px', color: '#888'}}>Hides web text completely, expecting text in the background image.</span>
+            </div>
           </label>
         </div>
 
         <div style={{ marginBottom: '30px', paddingBottom: '20px', borderBottom: '1px solid #eee' }}>
           <h2 style={{ margin: '0 0 10px 0', color: '#333' }}>Mobile Specific Settings</h2>
           <p style={{ color: '#666', marginBottom: '15px' }}>Enter the path to your mobile background image. The mobile layout expects the logo in the top black navbar, so the image should NOT have a logo baked in.</p>
-          <div style={{ display: 'flex', gap: '10px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             <input 
               type="text" 
               value={currentMobileBg}
               onChange={(e) => handleSetMobileBackground(e.target.value)}
-              style={{ flex: 1, padding: '12px', borderRadius: '8px', border: '1px solid #ccc', fontSize: '15px' }}
+              style={{ width: '100%', boxSizing: 'border-box', padding: '12px', borderRadius: '8px', border: '1px solid #ccc', fontSize: '15px' }}
               placeholder="/images/your_mobile_image.jpg"
             />
           </div>
           {currentMobileBg && (
             <div style={{ marginTop: '15px' }}>
               <p style={{ fontSize: '13px', color: '#888', marginBottom: '5px' }}>Mobile Background Preview:</p>
-              <img src={currentMobileBg} alt="Mobile Bg Preview" style={{ height: '150px', borderRadius: '8px', objectFit: 'cover', border: '1px solid #ddd' }} />
+              <img src={currentMobileBg} alt="Mobile Bg Preview" style={{ width: '100%', maxWidth: '200px', height: 'auto', borderRadius: '8px', objectFit: 'cover', border: '1px solid #ddd' }} />
             </div>
           )}
         </div>
@@ -143,29 +183,16 @@ export default function AdminPage() {
           {BACKGROUNDS.map((bg) => (
             <div 
               key={bg.id}
+              className="bg-item"
               onClick={() => handleSetBackground(bg.path)}
               style={{
-                display: 'flex',
-                gap: '20px',
-                padding: '20px',
                 border: `3px solid ${currentBg === bg.path ? '#B8863B' : '#eee'}`,
-                borderRadius: '12px',
-                cursor: 'pointer',
-                transition: 'all 0.2s',
                 backgroundColor: currentBg === bg.path ? '#Fcf9f2' : 'white'
               }}
             >
-              <div style={{
-                width: '150px',
-                height: '100px',
-                borderRadius: '8px',
-                backgroundImage: `url('${bg.path}')`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
-              }}></div>
+              <div className="bg-preview" style={{ backgroundImage: `url('${bg.path}')` }}></div>
               
-              <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', flex: 1 }}>
                 <h3 style={{ margin: '0 0 8px 0', color: '#5C1620' }}>{bg.name}</h3>
                 <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>{bg.desc}</p>
                 {currentBg === bg.path && (
@@ -179,5 +206,6 @@ export default function AdminPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

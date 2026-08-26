@@ -6,6 +6,7 @@ export default function Home() {
   const [showFloating, setShowFloating] = useState(false);
   const [useBakedLayout, setUseBakedLayout] = useState(false);
   const [useHybridLayout, setUseHybridLayout] = useState(false);
+  const [hideLogo, setHideLogo] = useState(false);
 
   useEffect(() => {
     const savedFloating = localStorage.getItem('chicken-extension-floating');
@@ -15,6 +16,7 @@ export default function Home() {
     
     const savedBg = localStorage.getItem('chicken-extension-bg');
     const savedBaked = localStorage.getItem('chicken-extension-baked-layout');
+    const savedHideLogo = localStorage.getItem('chicken-extension-hide-logo');
     
     // Auto-enable layouts based on background image
     if (savedBg === '/images/hero_baked.jpg' || savedBaked === 'true') {
@@ -24,6 +26,10 @@ export default function Home() {
     if (savedBg === '/images/hero_hybrid.jpg') {
       setUseHybridLayout(true);
     }
+
+    if (savedHideLogo === 'true') {
+      setHideLogo(true);
+    }
   }, []);
 
   return (
@@ -31,7 +37,7 @@ export default function Home() {
       <HeroWrapper>
         {/* Desktop Navbar */}
         <nav className="topbar desktop-only">
-        {!useBakedLayout && !useHybridLayout && (
+        {!useBakedLayout && !useHybridLayout && !hideLogo && (
           <div className="brand">
             <img src="/chicken-logo.png" alt="Chicken Extension Logo" className="huge-logo" />
           </div>
@@ -52,7 +58,7 @@ export default function Home() {
       <nav className="mobile-topbar mobile-only">
         <button className="hamburger">☰</button>
         <div className="mobile-brand">
-          <img src="/chicken-logo.png" alt="Chicken Extension Logo" />
+          {!hideLogo && <img src="/chicken-logo.png" alt="Chicken Extension Logo" />}
         </div>
         <a href="tel:+919315225535" className="mobile-call-icon">📞</a>
       </nav>
