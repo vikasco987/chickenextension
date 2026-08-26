@@ -72,57 +72,59 @@ body::before{
   .app-btn {
     flex: 1 1 100%;
   }
+}
 
-  /* Mobile Top Navbar */
-  .mobile-topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #000;
-    padding: 10px 20px;
-    height: 60px;
-  }
-  .mobile-topbar .hamburger, .mobile-topbar .mobile-call-icon {
-    background: transparent;
-    border: none;
-    color: #fff;
-    font-size: 24px;
-  }
-  .mobile-topbar .mobile-brand img {
-    height: 40px;
-    object-fit: contain;
-  }
+/* Mobile Top Navbar */
+.mobile-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #000;
+  padding: 10px 20px;
+  height: 60px;
+}
+.mobile-topbar .hamburger, .mobile-topbar .mobile-call-icon {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+}
+.mobile-topbar .mobile-brand img {
+  height: 40px;
+  object-fit: contain;
+}
 
-  /* Mobile Bottom Navbar */
-  .mobile-bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    z-index: 1000;
-  }
-  .mobile-bottom-nav .nav-btn {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 0;
-    color: #fff;
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    text-decoration: none;
-    gap: 4px;
-  }
-  .mobile-bottom-nav .btn-wa { background: #34c96a; }
-  .mobile-bottom-nav .btn-call { background: #e06c35; }
-  .mobile-bottom-nav .btn-swiggy { background: #fc8019; }
-  .mobile-bottom-nav .btn-zomato { background: #e23744; }
-  .mobile-bottom-nav .btn-toing { background: #6C3FC5; }
-  
-  /* Make sure bottom content doesn't hide behind sticky nav */
+/* Mobile Bottom Navbar */
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  z-index: 1000;
+}
+.mobile-bottom-nav .nav-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  gap: 4px;
+}
+.mobile-bottom-nav .btn-wa { background: #34c96a; }
+.mobile-bottom-nav .btn-call { background: #e06c35; }
+.mobile-bottom-nav .btn-swiggy { background: #fc8019; }
+.mobile-bottom-nav .btn-zomato { background: #e23744; }
+.mobile-bottom-nav .btn-toing { background: #6C3FC5; }
+
+/* Make sure bottom content doesn't hide behind sticky nav on mobile */
+@media (max-width: 900px) {
   body {
     padding-bottom: 60px;
   }
