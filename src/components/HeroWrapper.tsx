@@ -7,6 +7,7 @@ const DEFAULT_BG = "/images/hero_background_mughlai_1787676838358.png";
 export default function HeroWrapper({ children }: { children: React.ReactNode }) {
   const [bgImage, setBgImage] = useState<string>(DEFAULT_BG);
   const [bgImageMobile, setBgImageMobile] = useState<string>("/images/hero_mobile.jpg");
+  const [showFloating, setShowFloating] = useState<boolean>(false);
 
   useEffect(() => {
     // Read from localStorage on mount
@@ -23,6 +24,12 @@ export default function HeroWrapper({ children }: { children: React.ReactNode })
       // Fallback: if no mobile bg is set, but desktop is set, use desktop for mobile too temporarily
       setBgImageMobile(savedBg);
     }
+
+    // Check if floating design is enabled
+    const isFloating = localStorage.getItem('chicken-extension-show-floating');
+    if (isFloating === 'true') {
+      setShowFloating(true);
+    }
   }, []);
 
   return (
@@ -30,7 +37,7 @@ export default function HeroWrapper({ children }: { children: React.ReactNode })
       className="hero-wrapper" 
       style={{
         '--bg-desktop': `url('${bgImage}')`,
-        '--bg-mobile': `url('${bgImageMobile}')`,
+        '--bg-mobile': showFloating ? 'none' : `url('${bgImageMobile}')`,
         transition: "background-image 0.5s ease-in-out"
       } as React.CSSProperties}
     >
