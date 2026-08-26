@@ -373,6 +373,44 @@ nav.topbar{
 .ci-main{ width:340px; height:340px; top:10px; left:60px; }
 .ci-side{ width:220px; height:220px; bottom:0; right:0; animation-delay:1.4s; }
 
+@media (max-width: 900px) {
+  .hero-visual {
+    height: 400px;
+    margin-top: 20px;
+  }
+  .ci-main {
+    width: 250px;
+    height: 250px;
+    top: 0;
+    left: 20px;
+  }
+  .ci-side {
+    width: 180px;
+    height: 180px;
+    bottom: 20px;
+    right: 10px;
+  }
+}
+@media (max-width: 480px) {
+  .hero-visual {
+    height: 320px;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .ci-main {
+    width: 220px;
+    height: 220px;
+    top: 0;
+    left: 10px;
+  }
+  .ci-side {
+    width: 150px;
+    height: 150px;
+    bottom: 0;
+    right: 0;
+  }
+}
+
 .float-badge{
   position:absolute;
   background:#fff;
@@ -403,6 +441,21 @@ nav.topbar{
 .rating-badge .stars{ color:var(--gold); font-size:15px; }
 .rating-badge .num{ font-family:var(--font-playfair), 'Playfair Display', serif; font-size:20px; font-weight:800; color:var(--gold); }
 .rating-badge .lab{ font-size:10.5px; color:rgba(255,255,255,0.7); }
+
+@media (max-width: 480px) {
+  .float-badge {
+    padding: 10px 14px;
+  }
+  .fb-top {
+    right: 0px;
+    top: -10px;
+  }
+  .rating-badge {
+    bottom: 20px;
+    left: 10px;
+    padding: 10px 16px;
+  }
+}
 
 /* REVIEW BANNER */
 .review-banner{
