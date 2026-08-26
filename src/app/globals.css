@@ -233,31 +233,32 @@ nav.topbar{
   font-weight:900;
   font-size:clamp(46px, 6vw, 74px);
   line-height:1.04;
-  color:var(--maroon-dark);
+  color:#111111; /* Changed to black as requested */
   margin-bottom:6px;
-  text-shadow: 0 4px 12px rgba(62, 15, 23, 0.15);
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   letter-spacing: 0.5px;
 }
 .hero-text h1 .exp{
   display:block;
   font-family:var(--font-pinyon-script), 'Pinyon Script', cursive;
   font-weight:400;
-  color:var(--orange);
+  color:#111111; /* Changed to black as requested */
   font-size:clamp(48px, 6.2vw, 76px);
   margin-top:-6px;
-  text-shadow: 1px 2px 6px rgba(193, 83, 27, 0.2);
+  text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .tagline{
   display:flex; align-items:center; gap:10px; flex-wrap:wrap;
   font-size:14.5px; font-weight:800; letter-spacing:2px; text-transform:uppercase;
-  color:var(--maroon); margin:15px 0;
+  color:#111111; /* Changed to black */
+  margin:15px 0;
   text-shadow: 0 1px 2px rgba(255,255,255,0.5);
 }
 .tagline.center-tagline {
   justify-content: center;
 }
-.tagline .sep{ color:var(--orange); }
+.tagline .sep{ color:#111111; }
 
 .text-center { text-align: center; }
 .hybrid-spacing {
@@ -302,9 +303,9 @@ nav.topbar{
   font-family: var(--font-playfair), 'Playfair Display', serif;
   font-weight: 900;
   font-size: clamp(28px, 4vw, 42px);
-  color: #9b1b22;
+  color: #111111; /* Changed to black */
   letter-spacing: 2px;
-  text-shadow: 0 2px 4px rgba(155, 27, 34, 0.2);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .order-now-heading .ornament {
   width: 40px;
