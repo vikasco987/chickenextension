@@ -93,23 +93,21 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="hero-visual">
-            {showFloating && (
-              <>
-                <div className="collage-img ci-main"><img src="/images/mughlai_curry_bowl_1787676794438.png" alt="Butter chicken curry" /></div>
-                <div className="collage-img ci-side"><img src="/images/mughlai_thali_1787676811246.png" alt="Mughlai thali" /></div>
-                <div className="float-badge fb-top">
-                  <div className="photo"><img src="/images/seekh_kebab_skewers_1787676824584.png" alt="Seekh kebab skewers" /></div>
-                  <div><div className="t">Best Seller</div><div className="v">Seekh Kebab</div></div>
-                </div>
-                <div className="rating-badge">
-                  <span className="stars">★★★★★</span>
-                  <div><div className="num">4.7</div><div className="lab">Google Rating</div></div>
-                  <div className="v">4.9/5</div>
-                </div>
-              </>
-            )}
-          </div>
+          {showFloating && (
+            <div className="hero-visual">
+              <div className="collage-img ci-main"><img src="/images/mughlai_curry_bowl_1787676794438.png" alt="Butter chicken curry" /></div>
+              <div className="collage-img ci-side"><img src="/images/mughlai_thali_1787676811246.png" alt="Mughlai thali" /></div>
+              <div className="float-badge fb-top">
+                <div className="photo"><img src="/images/seekh_kebab_skewers_1787676824584.png" alt="Seekh kebab skewers" /></div>
+                <div><div className="t">Best Seller</div><div className="v">Seekh Kebab</div></div>
+              </div>
+              <div className="rating-badge">
+                <span className="stars">★★★★★</span>
+                <div><div className="num">4.7</div><div className="lab">Google Rating</div></div>
+                <div className="v">4.9/5</div>
+              </div>
+            </div>
+          )}
 
         </div>
       </section>
