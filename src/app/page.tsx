@@ -10,6 +10,19 @@ export default function Home() {
   const [hideLogo, setHideLogo] = useState(false);
   const [logoSizeDesktop, setLogoSizeDesktop] = useState(280);
   const [logoSizeMobile, setLogoSizeMobile] = useState(160);
+  const [showBottomNav, setShowBottomNav] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 150) {
+        setShowBottomNav(true);
+      } else {
+        setShowBottomNav(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     // Fetch global settings
@@ -49,14 +62,7 @@ export default function Home() {
         <a href="#" className="btn-order-now">Order Now</a>
       </nav>
 
-      {/* Mobile Navbar */}
-      <nav className="mobile-topbar mobile-only">
-        <button className="hamburger">☰</button>
-        <div className="mobile-brand">
-          {!hideLogo && <img src="/chicken-logo.png" alt="Chicken Extension Logo" />}
-        </div>
-        <a href="tel:+919315225535" className="mobile-call-icon">📞</a>
-      </nav>
+      {/* Mobile Navbar Removed as per request */}
 
       <section className="hero">
         <div className="hero-grid">
@@ -67,8 +73,7 @@ export default function Home() {
             </div>
             {!useBakedLayout && (
               <div className={useHybridLayout ? "hero-text text-center hybrid-spacing" : "hero-text"}>
-                <p className="lede script-lede">Craving something delicious?</p>
-                <h1>AUTHENTIC<br /><span className="exp-block">MUGHLAI EXPERIENCE</span></h1>
+                <h1>AUTHENTIC<br /><span className="exp-block">Mughlai Experience</span></h1>
 
                 <div className="tagline center-tagline">
                   <span>Kebabs</span><span className="sep">·</span><span>Tikkas</span><span className="sep">·</span><span>Curries</span><span className="sep">·</span><span>Biryani</span>
@@ -118,7 +123,7 @@ export default function Home() {
       </HeroWrapper>
 
       {/* Mobile Sticky Bottom Navbar */}
-      <div className="mobile-bottom-nav mobile-only">
+      <div className={`mobile-bottom-nav mobile-only ${showBottomNav ? 'visible' : 'hidden'}`}>
         <a href="https://wa.me/919315225535" className="nav-btn btn-wa"><div>💬</div><div>WhatsApp</div></a>
         <a href="tel:+919315225535" className="nav-btn btn-call"><div>📞</div><div>Call Now</div></a>
         <a href="#" className="nav-btn btn-swiggy"><div>🛵</div><div>Swiggy</div></a>
@@ -127,14 +132,14 @@ export default function Home() {
       </div>
 
       <div className="wrap">
-        <section className="review-banner">
+        <section className="review-banner compact-review">
           <div className="review-left">
             <div className="star-badge">⭐</div>
-            <div className="t1">REVIEW US &amp;<br/>GET DISCOUNT</div>
+            <div className="t1">REVIEW &amp;<br/>GET DISCOUNT</div>
           </div>
-          <div className="review-mid">Loved our food?<br/>Leave us a Google Review and unlock your special discount!</div>
+          <div className="review-mid">Loved our food? Leave us a Google Review and unlock your special discount!</div>
           <div className="review-right">
-            <a href="#" className="btn-google">🅖 Review Us On Google</a>
+            <a href="#" className="btn-google">🅖 Review Us ➔</a>
             <div className="stars-sm">★★★★★ <span style={{fontFamily:'var(--font-great-vibes), cursive', fontSize:'18px', color:'var(--gold)'}}>Thank you!</span></div>
           </div>
         </section>

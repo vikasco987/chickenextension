@@ -1,0 +1,10 @@
+{
+  "bgDesktop": "/images/hero_custom_kebab_biryani.jpg",
+  "bgMobile": "none",
+  "showFloating": false,
+  "hideLogo": false,
+  "useBakedLayout": false,
+  "useHybridLayout": false,
+  "logoSizeDesktop": 300,
+  "logoSizeMobile": 240
+}

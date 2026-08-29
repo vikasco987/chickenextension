@@ -5,6 +5,12 @@ import Link from 'next/link';
 
 const BACKGROUNDS = [
   {
+    id: "bg-kebab-biryani",
+    name: "Kebab & Biryani Feast (New)",
+    path: "/images/hero_custom_kebab_biryani.jpg",
+    desc: "A stunning layout of kebabs, biryani, and tikka masala on a textured background."
+  },
+  {
     id: "bg-hybrid-custom",
     name: "Perfect Hybrid Layout (Newest)",
     path: "/images/hero_hybrid.jpg",
