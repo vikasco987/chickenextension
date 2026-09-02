@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
 @import "tailwindcss";
 
 :root{
@@ -845,7 +846,10 @@ nav.topbar{
   line-height: 1.4;
 }
 .review-btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   background: #a33232;
   color: white;
   font-size: 11px;
@@ -855,14 +859,16 @@ nav.topbar{
   text-decoration: none;
 }
 .review-btn .g-icon {
-  margin-left: 6px;
-  font-weight: bold;
+  display: flex;
+  align-items: center;
 }
 .stars {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
   color: #f7a81b;
   margin-top: 10px;
-  letter-spacing: 2px;
-  font-size: 16px;
 }
 
 .light-social-grid {
