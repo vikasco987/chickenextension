@@ -89,16 +89,65 @@ export default function Home() {
             )}
 
             <div className={(useBakedLayout || useHybridLayout) ? "baked-order-card" : "order-card"} style={{ marginTop: useBakedLayout ? '330px' : (useHybridLayout ? '20px' : '0') }}>
-              {!useBakedLayout && <div className="order-divider">Order Directly</div>}
-              <div className="direct-row">
-                <a href="https://wa.me/919315225535" target="_blank" rel="noopener" className="order-btn btn-whatsapp">💬 WhatsApp</a>
-                <a href="tel:+919315225535" className="order-btn btn-call">📞 Call Now</a>
-              </div>
-              {!useBakedLayout && <div className="order-divider">Order On Delivery Apps</div>}
-              <div className="app-row">
-                <a href="https://www.swiggy.com/" target="_blank" rel="noopener" className="app-btn app-swiggy">Swiggy</a>
-                <a href="https://www.zomato.com/" target="_blank" rel="noopener" className="app-btn app-zomato">Zomato</a>
-                <a href="#" target="_blank" rel="noopener" className="app-btn app-toing">toing</a>
+              <div className="linktree-section">
+                <div className="lt-box">
+                  <div className="lt-badge">CLICK TO ORDER</div>
+                  <div className="lt-grid-4">
+                    <a href="https://www.zomato.com/" target="_blank" rel="noopener" className="lt-btn lt-zomato">
+                      <span className="logo">zomato</span>
+                      <small>ORDER NOW</small>
+                    </a>
+                    <a href="https://www.swiggy.com/" target="_blank" rel="noopener" className="lt-btn lt-swiggy">
+                      <span className="logo-icon">S</span><span className="logo">SWIGGY</span>
+                      <small>ORDER NOW</small>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener" className="lt-btn lt-toing">
+                      <span className="logo">toing</span>
+                      <small>ORDER NOW</small>
+                    </a>
+                    <a href="https://wa.me/919315225535" target="_blank" rel="noopener" className="lt-btn lt-whatsapp">
+                      <span className="logo-icon">💬</span>
+                      <small>WHATSAPP<br/>ORDER NOW</small>
+                    </a>
+                  </div>
+                </div>
+
+                <a href="tel:+919315225535" className="lt-box lt-call-box">
+                  <div className="icon-circle">📞</div>
+                  <div className="text-col">
+                    <div className="lbl">DIRECT ORDER / CALL</div>
+                    <div className="num">9315225535</div>
+                  </div>
+                </a>
+
+                <a href="https://share.google/z056pHEGQhTC9oWAE" className="lt-box lt-review-box">
+                  <div className="icon-map">📍</div>
+                  <div className="text-col">
+                    <div className="lbl">REVIEW US ON</div>
+                    <div className="title">GOOGLE</div>
+                    <div className="sub">BUSINESS PROFILE</div>
+                    <div className="tags">Reviews • Photos • Location</div>
+                  </div>
+                  <div className="arrow">➔</div>
+                </a>
+
+                <div className="lt-box lt-social-box">
+                  <div className="lt-badge">FOLLOW US ON</div>
+                  <div className="lt-grid-4">
+                    <a href="https://www.instagram.com/chickenextension?igsi=MW5pdXNrbzNidXpoNw%3D%3D&utm_source=qr" className="s-btn s-ig"><span className="icon">📷</span><small>INSTAGRAM</small></a>
+                    <a href="https://www.facebook.com/share/19DJDYoqse/?mibextid=wwXIfr" className="s-btn s-fb"><span className="icon">f</span><small>FACEBOOK</small></a>
+                    <a href="https://www.threads.com/@chickenextension?igshid=NTc4MTIwNjQ2YQ==" className="s-btn s-th"><span className="icon">@</span><small>THREADS</small></a>
+                    <a href="https://youtube.com/@chickenextension?si=QFKfcNAB70SVrdXE" className="s-btn s-yt"><span className="icon">▶</span><small>YOUTUBE</small></a>
+                  </div>
+                </div>
+
+                <div className="lt-footer">
+                  <div className="icon">⭐</div>
+                  <div className="icon-text">
+                    <span className="pin">📍</span>
+                    Shop No-G/F-36, Central Plaza, Sector-4,<br/>Near Madan Sweets, Greater Noida West,<br/>GB Nagar, U.P. - 201318
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -132,7 +181,7 @@ export default function Home() {
         <a href="#" className="nav-btn btn-toing"><div>🚀</div><div>Toing</div></a>
       </div>
 
-      <div className="wrap">
+      <div className="wrap hide-on-mobile">
         <section className="review-banner compact-review">
           <div className="review-left">
             <div className="star-badge">📍</div>
@@ -161,7 +210,9 @@ export default function Home() {
           <div className="info-item"><span className="ic">🛵</span><div><div className="lbl">Free Delivery</div><div className="val">Up to 2 KM</div></div></div>
           <div className="info-item"><span className="ic">🛍️</span><div><div className="lbl">Order Online</div><div className="val">Swiggy | Zomato | toing</div></div></div>
         </section>
+      </div>
 
+      <div className="wrap">
         <section className="signatures">
           <div>
             <div className="sig-header">
