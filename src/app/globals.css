@@ -826,6 +826,7 @@ nav.topbar{
   border-radius: 12px;
   padding: 20px 16px;
   margin-top: 20px;
+  margin-bottom: 40px;
   display: flex;
   gap: 16px;
   box-shadow: 0 6px 16px rgba(0,0,0,0.05);
