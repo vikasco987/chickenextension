@@ -703,11 +703,7 @@ nav.topbar{
 
 /* LIGHT THEME LAYOUT (Mobile Primary) */
 .light-hero-title {
-  font-family: var(--font-playfair), 'Playfair Display', serif;
-  font-size: 32px;
-  color: #3b2313;
-  line-height: 1.1;
-  font-weight: 900;
+  text-align: center;
   margin-top: 10px;
 }
 .light-hero-title .cursive {
@@ -717,18 +713,29 @@ nav.topbar{
   color: #a36832;
   display: block;
 }
+.light-hero-title .mughlai {
+  font-family: var(--font-playfair), 'Playfair Display', serif;
+  font-size: 32px;
+  color: #3b2313;
+  line-height: 1.1;
+  font-weight: 900;
+  display: block;
+}
 .light-hero-title .cursive.bottom {
   margin-top: -10px;
 }
 .light-tagline {
   color: #3b2313;
-  font-weight: 700;
+  font-family: var(--font-poppins), 'Poppins', sans-serif;
+  font-weight: 600;
   margin-top: 15px;
-  font-size: 13px;
+  font-size: 11px;
   letter-spacing: 0.5px;
+  text-align: center;
 }
 .light-tagline .sep {
   color: #8c6a51;
+  margin: 0 4px;
 }
 .light-heading {
   margin-top: 25px;
@@ -890,6 +897,37 @@ nav.topbar{
 .s-link span {
   font-size: 11px;
   font-weight: 600;
+}
+
+.light-info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  text-align: center;
+  border-top: 1px solid #d6c6b3;
+  border-bottom: 1px solid #d6c6b3;
+  margin-top: 25px;
+  padding: 15px 0;
+}
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #3b2313;
+  border-right: 1px solid #d6c6b3;
+}
+.info-item:last-child {
+  border-right: none;
+}
+.info-item .i-icon {
+  font-size: 20px;
+  margin-bottom: 4px;
+  color: #5c351f;
+}
+.info-item span {
+  font-size: 9px;
+  font-weight: 700;
 }
 
 .hide-on-mobile { display: block; }
