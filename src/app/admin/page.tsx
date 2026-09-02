@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import QRGenerator from '../../components/QRGenerator';
 
 const BACKGROUNDS = [
   {
@@ -93,6 +94,9 @@ export default function AdminPage() {
   const [hideLogo, setHideLogo] = useState<boolean>(false);
   const [logoSizeDesktop, setLogoSizeDesktop] = useState<number>(280);
   const [logoSizeMobile, setLogoSizeMobile] = useState<number>(180);
+  const [activeTab, setActiveTab] = useState<'settings' | 'qrcode'>('settings');
+  const [qrUrl, setQrUrl] = useState<string>('https://chickenextension.vercel.app/');
+  const [qrDesign, setQrDesign] = useState<'premium-dark' | 'clean-light' | 'modern-accent'>('premium-dark');
 
   useEffect(() => {
     fetch('/api/settings?t=' + new Date().getTime(), { cache: 'no-store' })
@@ -181,13 +185,29 @@ export default function AdminPage() {
       }
     `}} />
     <div className="admin-container">
-      <div className="admin-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
-        <h1 style={{ color: '#5C1620', fontSize: '24px', margin: 0 }}>Admin Panel: Settings</h1>
+      <div className="admin-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+        <h1 style={{ color: '#5C1620', fontSize: '24px', margin: 0 }}>Admin Panel</h1>
         <Link href="/" style={{ padding: '10px 20px', background: '#5C1620', color: 'white', textDecoration: 'none', borderRadius: '8px' }}>
           View Live Site
         </Link>
       </div>
 
+      <div style={{ display: 'flex', gap: '10px', marginBottom: '30px' }}>
+        <button 
+          onClick={() => setActiveTab('settings')}
+          style={{ padding: '10px 20px', borderRadius: '8px', border: 'none', cursor: 'pointer', background: activeTab === 'settings' ? '#B8863B' : '#eee', color: activeTab === 'settings' ? 'white' : '#333', fontWeight: 'bold' }}
+        >
+          Layout Settings
+        </button>
+        <button 
+          onClick={() => setActiveTab('qrcode')}
+          style={{ padding: '10px 20px', borderRadius: '8px', border: 'none', cursor: 'pointer', background: activeTab === 'qrcode' ? '#B8863B' : '#eee', color: activeTab === 'qrcode' ? 'white' : '#333', fontWeight: 'bold' }}
+        >
+          QR Code Generator
+        </button>
+      </div>
+
+      {activeTab === 'settings' && (
       <div className="admin-card">
         
         <div style={{ marginBottom: '30px', paddingBottom: '20px', borderBottom: '1px solid #eee' }}>
@@ -304,8 +324,42 @@ export default function AdminPage() {
           ))}
         </div>
       </div>
+      )}
+
+      {activeTab === 'qrcode' && (
+      <div className="admin-card" style={{ padding: '40px' }}>
+        <h2 style={{ color: '#333', marginBottom: '20px' }}>QR Code Generator</h2>
+        
+        <div style={{ marginBottom: '20px' }}>
+          <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold', color: '#555' }}>Target URL</label>
+          <input 
+            type="text" 
+            value={qrUrl}
+            onChange={(e) => setQrUrl(e.target.value)}
+            style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #ccc', fontSize: '16px' }}
+          />
+        </div>
+
+        <div style={{ marginBottom: '40px' }}>
+          <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold', color: '#555' }}>Select Design</label>
+          <select 
+            value={qrDesign}
+            onChange={(e) => setQrDesign(e.target.value as any)}
+            style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #ccc', fontSize: '16px' }}
+          >
+            <option value="premium-dark">Premium Dark (Best for night mode)</option>
+            <option value="clean-light">Clean Light (Minimalist white)</option>
+            <option value="modern-accent">Modern Accent (Bold Orange)</option>
+          </select>
+        </div>
+
+        <div style={{ background: '#f5f5f5', padding: '40px', borderRadius: '12px', border: '1px dashed #ccc' }}>
+          <QRGenerator url={qrUrl} design={qrDesign} />
+        </div>
+      </div>
+      )}
       
-      {/* Sticky Save Button Container */}
+      {activeTab === 'settings' && (
       <div style={{
         position: 'fixed', bottom: 0, left: 0, right: 0, 
         background: 'rgba(255,255,255,0.95)', 
@@ -336,6 +390,7 @@ export default function AdminPage() {
           💾 Save All Settings
         </button>
       </div>
+      )}
       <div style={{ height: '80px' }}></div> {/* Spacer for sticky footer */}
     </div>
     </>

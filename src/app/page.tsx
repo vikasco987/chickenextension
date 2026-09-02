@@ -76,7 +76,8 @@ export default function Home() {
                 <h1>AUTHENTIC<br /><span className="exp-block">Mughlai Experience</span></h1>
 
                 <div className="tagline center-tagline">
-                  <span>Kebabs</span><span className="sep">·</span><span>Tikkas</span><span className="sep">·</span><span>Curries</span><span className="sep">·</span><span>Biryani</span>
+                  <div><span>Kebabs</span><span className="sep">·</span><span>Tikkas</span><span className="sep">·</span><span>Curries</span></div>
+                  <div style={{ marginTop: '4px' }}><span>Biryani</span><span className="sep">·</span><span>North Indian</span><span className="sep">·</span><span>Shawarma</span></div>
                 </div>
                 
                 <div className="order-now-heading">
@@ -134,8 +135,8 @@ export default function Home() {
       <div className="wrap">
         <section className="review-banner compact-review">
           <div className="review-left">
-            <div className="star-badge">⭐</div>
-            <div className="t1">REVIEW &amp;<br/>GET DISCOUNT</div>
+            <div className="star-badge">📍</div>
+            <div className="t1">GOOGLE REVIEW &amp;<br/>GET DISCOUNT</div>
           </div>
           <div className="review-mid">Loved our food? Leave us a Google Review and unlock your special discount!</div>
           <div className="review-right">
