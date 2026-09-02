@@ -109,13 +109,13 @@ export default function Home() {
                 </a>
               </div>
 
-              <div className="light-review-box">
-                <div className="star-icon">
+              <div className="light-review-box relative overflow-hidden">
+                <div className="star-icon relative z-10">
                   <svg width="44" height="44" viewBox="0 0 24 24" fill="#f7a81b" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
                   </svg>
                 </div>
-                <div className="review-content">
+                <div className="review-content relative z-10 w-full">
                   <h3>REVIEW US & GET DISCOUNT</h3>
                   <p>Leave a Google Review and<br/>unlock your special discount!</p>
                   <a href="https://share.google/z056pHEGQhTC9oWAE" className="review-btn">
@@ -136,6 +136,13 @@ export default function Home() {
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="#f7a81b"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="#f7a81b"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
                   </div>
+                </div>
+                
+                <div className="absolute right-4 bottom-8 opacity-70 pointer-events-none">
+                  <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M70,10 C85,35 65,75 25,85" stroke="#a33232" strokeWidth="3" strokeLinecap="round" fill="none" strokeDasharray="6,4"/>
+                    <path d="M25,85 L40,85 M25,85 L30,70" stroke="#a33232" strokeWidth="4" strokeLinecap="round" fill="none"/>
+                  </svg>
                 </div>
               </div>
 
