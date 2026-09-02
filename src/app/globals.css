@@ -58,8 +58,8 @@ body::before{
     width: 100%;
   }
   .mobile-huge-logo {
-    height: 160px;
-    width: auto;
+    width: 250px !important;
+    height: auto !important;
     max-width: 90vw;
     object-fit: contain;
     filter: drop-shadow(0 15px 25px rgba(0,0,0,0.3));
