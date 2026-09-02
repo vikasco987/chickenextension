@@ -73,81 +73,64 @@ export default function Home() {
             </div>
             {!useBakedLayout && (
               <div className={useHybridLayout ? "hero-text text-center hybrid-spacing" : "hero-text"}>
-                <h1>AUTHENTIC<br /><span className="exp-block">Mughlai Experience</span></h1>
+                <h1 className="light-hero-title">
+                  <span className="cursive">Authentic</span><br/>
+                  MUGHLAI<br/>
+                  <span className="cursive bottom">Experience</span>
+                </h1>
 
-                <div className="tagline center-tagline">
-                  <div><span>Kebabs</span><span className="sep">·</span><span>Tikkas</span><span className="sep">·</span><span>Curries</span></div>
-                  <div style={{ marginTop: '4px' }}><span>Biryani</span><span className="sep">·</span><span>North Indian</span><span className="sep">·</span><span>Shawarma</span></div>
+                <div className="tagline center-tagline light-tagline">
+                  <div><span>KEBABS</span><span className="sep">·</span><span>TIKKAS</span><span className="sep">·</span><span>CURRIES</span><span className="sep">·</span><span>BIRYANI</span></div>
+                  <div style={{ marginTop: '4px' }}><span>NORTH INDIAN</span><span className="sep">·</span><span>SHAWARMA</span></div>
                 </div>
                 
-                <div className="order-now-heading">
-                  <span className="ornament"></span>
+                <div className="order-now-heading light-heading">
                   <h2>ORDER NOW</h2>
-                  <span className="ornament"></span>
                 </div>
               </div>
             )}
 
-            <div className={(useBakedLayout || useHybridLayout) ? "baked-order-card" : "order-card"} style={{ marginTop: useBakedLayout ? '330px' : (useHybridLayout ? '20px' : '0') }}>
-              <div className="linktree-section">
-                <div className="lt-box">
-                  <div className="lt-badge">CLICK TO ORDER</div>
-                  <div className="lt-grid-4">
-                    <a href="https://www.zomato.com/" target="_blank" rel="noopener" className="lt-btn lt-zomato">
-                      <span className="logo">zomato</span>
-                      <small>ORDER NOW</small>
-                    </a>
-                    <a href="https://www.swiggy.com/" target="_blank" rel="noopener" className="lt-btn lt-swiggy">
-                      <span className="logo-icon">S</span><span className="logo">SWIGGY</span>
-                      <small>ORDER NOW</small>
-                    </a>
-                    <a href="#" target="_blank" rel="noopener" className="lt-btn lt-toing">
-                      <span className="logo">toing</span>
-                      <small>ORDER NOW</small>
-                    </a>
-                    <a href="https://wa.me/919315225535" target="_blank" rel="noopener" className="lt-btn lt-whatsapp">
-                      <span className="logo-icon">💬</span>
-                      <small>WHATSAPP<br/>ORDER NOW</small>
-                    </a>
-                  </div>
-                </div>
-
-                <a href="tel:+919315225535" className="lt-box lt-call-box">
-                  <div className="icon-circle">📞</div>
-                  <div className="text-col">
-                    <div className="lbl">DIRECT ORDER / CALL</div>
-                    <div className="num">9315225535</div>
-                  </div>
+            <div className="order-card light-theme-card">
+              <div className="light-divider"><span>ORDER DIRECTLY</span></div>
+              <div className="light-grid-2">
+                <a href="https://wa.me/919315225535" target="_blank" rel="noopener" className="l-btn l-whatsapp">
+                  <span className="icon">💬</span> WHATSAPP
                 </a>
-
-                <a href="https://share.google/z056pHEGQhTC9oWAE" className="lt-box lt-review-box">
-                  <div className="icon-map">📍</div>
-                  <div className="text-col">
-                    <div className="lbl">REVIEW US ON</div>
-                    <div className="title">GOOGLE</div>
-                    <div className="sub">BUSINESS PROFILE</div>
-                    <div className="tags">Reviews • Photos • Location</div>
-                  </div>
-                  <div className="arrow">➔</div>
+                <a href="tel:+919315225535" className="l-btn l-call">
+                  <span className="icon">📞</span> CALL NOW
                 </a>
+              </div>
 
-                <div className="lt-box lt-social-box">
-                  <div className="lt-badge">FOLLOW US ON</div>
-                  <div className="lt-grid-4">
-                    <a href="https://www.instagram.com/chickenextension?igsi=MW5pdXNrbzNidXpoNw%3D%3D&utm_source=qr" className="s-btn s-ig"><span className="icon">📷</span><small>INSTAGRAM</small></a>
-                    <a href="https://www.facebook.com/share/19DJDYoqse/?mibextid=wwXIfr" className="s-btn s-fb"><span className="icon">f</span><small>FACEBOOK</small></a>
-                    <a href="https://www.threads.com/@chickenextension?igshid=NTc4MTIwNjQ2YQ==" className="s-btn s-th"><span className="icon">@</span><small>THREADS</small></a>
-                    <a href="https://youtube.com/@chickenextension?si=QFKfcNAB70SVrdXE" className="s-btn s-yt"><span className="icon">▶</span><small>YOUTUBE</small></a>
-                  </div>
-                </div>
+              <div className="light-divider"><span>ORDER ON DELIVERY APPS</span></div>
+              <div className="light-grid-3">
+                <a href="https://www.swiggy.com/" target="_blank" rel="noopener" className="l-btn l-swiggy">
+                  <span className="icon">S</span> SWIGGY
+                </a>
+                <a href="https://www.zomato.com/" target="_blank" rel="noopener" className="l-btn l-zomato">
+                  zomato
+                </a>
+                <a href="#" target="_blank" rel="noopener" className="l-btn l-toing">
+                  <span className="icon">🚀</span> toing
+                </a>
+              </div>
 
-                <div className="lt-footer">
-                  <div className="icon">⭐</div>
-                  <div className="icon-text">
-                    <span className="pin">📍</span>
-                    Shop No-G/F-36, Central Plaza, Sector-4,<br/>Near Madan Sweets, Greater Noida West,<br/>GB Nagar, U.P. - 201318
-                  </div>
+              <div className="light-review-box">
+                <div className="star-icon">⭐</div>
+                <div className="review-content">
+                  <h3>REVIEW US & GET DISCOUNT</h3>
+                  <p>Leave a Google Review and<br/>unlock your special discount!</p>
+                  <a href="https://share.google/z056pHEGQhTC9oWAE" className="review-btn">
+                    REVIEW US ON GOOGLE <span className="g-icon">G</span>
+                  </a>
+                  <div className="stars">★★★★★</div>
                 </div>
+              </div>
+
+              <div className="light-divider"><span>FOLLOW US</span></div>
+              <div className="light-social-grid">
+                <a href="https://www.instagram.com/chickenextension?igsi=MW5pdXNrbzNidXpoNw%3D%3D&utm_source=qr" className="s-link"><div className="s-icon ig">📷</div><span>Instagram</span></a>
+                <a href="https://www.facebook.com/share/19DJDYoqse/?mibextid=wwXIfr" className="s-link"><div className="s-icon fb">f</div><span>Facebook</span></a>
+                <a href="https://www.threads.com/@chickenextension?igshid=NTc4MTIwNjQ2YQ==" className="s-link"><div className="s-icon th">@</div><span>Threads</span></a>
               </div>
             </div>
           </div>
