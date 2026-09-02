@@ -705,7 +705,7 @@ nav.topbar{
 /* LIGHT THEME LAYOUT (Mobile Primary) */
 .light-hero-title {
   text-align: center;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 .light-hero-title .cursive {
   font-family: var(--font-pinyon-script), 'Pinyon Script', cursive;
@@ -713,17 +713,22 @@ nav.topbar{
   font-weight: 400;
   color: #a36832;
   display: block;
+  margin-bottom: -15px;
 }
 .light-hero-title .mughlai {
   font-family: var(--font-playfair), 'Playfair Display', serif;
-  font-size: 32px;
+  font-size: 36px;
   color: #3b2313;
-  line-height: 1.1;
+  line-height: 1;
   font-weight: 900;
   display: block;
+  position: relative;
+  z-index: 2;
 }
 .light-hero-title .cursive.bottom {
-  margin-top: -10px;
+  margin-top: -15px;
+  position: relative;
+  z-index: 1;
 }
 .light-tagline {
   color: #3b2313;

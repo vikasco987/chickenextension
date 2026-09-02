@@ -9,7 +9,7 @@ export default function Home() {
   const [useHybridLayout, setUseHybridLayout] = useState(false);
   const [hideLogo, setHideLogo] = useState(false);
   const [logoSizeDesktop, setLogoSizeDesktop] = useState(280);
-  const [logoSizeMobile, setLogoSizeMobile] = useState(160);
+  const [logoSizeMobile, setLogoSizeMobile] = useState(220);
   const [showBottomNav, setShowBottomNav] = useState(false);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function Home() {
         setUseBakedLayout(data.useBakedLayout || false);
         setUseHybridLayout(data.useHybridLayout || false);
         setLogoSizeDesktop(data.logoSizeDesktop || 280);
-        setLogoSizeMobile(data.logoSizeMobile || 160);
+        setLogoSizeMobile(data.logoSizeMobile || 220);
       })
       .catch(console.error);
   }, []);
@@ -52,30 +52,25 @@ export default function Home() {
         )}
         <ul className="nav-links">
           <li><a href="#" className="active">Home</a></li>
-          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Order Now</a></li>
           <li><a href="#">Menu</a></li>
-          <li><a href="#">Gallery</a></li>
-          <li><a href="#">Reviews</a></li>
-          <li><a href="#">Location</a></li>
+          <li><a href="#">About Us</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
-        <a href="#" className="btn-order-now">Order Now</a>
-      </nav>
-
-      {/* Mobile Navbar Removed as per request */}
+        </nav>
 
       <section className="hero">
         <div className="hero-grid">
 
           <div className="hero-content-left relative z-10 pt-4 sm:pt-8">
             <div className="mobile-main-logo-container mobile-only">
-              <img src="/chicken-logo-transparent.png" alt="Chicken Extension" className="mobile-huge-logo" style={{ height: `${logoSizeMobile}px` }} />
+              <img src="/chicken-logo-transparent.png" alt="Chicken Extension" className="mobile-huge-logo" style={{ width: `${logoSizeMobile}px` }} />
             </div>
             {!useBakedLayout && (
               <div className={useHybridLayout ? "hero-text text-center hybrid-spacing" : "hero-text"}>
                 <div className="light-hero-title">
-                  <span className="cursive">Authentic</span><br/>
-                  <span className="mughlai">MUGHLAI</span><br/>
+                  <span className="cursive">Authentic</span>
+                  <span className="mughlai">MUGHLAI</span>
                   <span className="cursive bottom">Experience</span>
                 </div>
 
