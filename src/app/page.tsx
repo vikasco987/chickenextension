@@ -63,8 +63,8 @@ export default function Home() {
         <div className="hero-grid">
 
           <div className="hero-content-left relative z-10 pt-4 sm:pt-8">
-            <div className="mobile-main-logo-container mobile-only">
-              <img src="/chicken-logo-transparent.png" alt="Chicken Extension" className="mobile-huge-logo" style={{ width: `${logoSizeMobile}px` }} />
+            <div className="mobile-main-logo-container mobile-only text-center w-full flex justify-center">
+              <img src="/chicken-logo-transparent.png" alt="Chicken Extension" className="mobile-huge-logo" style={{ width: '240px', maxWidth: '100%', margin: '0 auto' }} />
             </div>
             {!useBakedLayout && (
               <div className={useHybridLayout ? "hero-text text-center hybrid-spacing" : "hero-text"}>
