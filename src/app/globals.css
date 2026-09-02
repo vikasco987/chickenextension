@@ -951,3 +951,12 @@ nav.topbar{
   }
 }
 
+/* Dynamic Button Click Effects */
+.l-btn, .review-btn, .s-link, .sticky-btn {
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.l-btn:active, .review-btn:active, .s-link:active, .sticky-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
