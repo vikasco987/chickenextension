@@ -90,7 +90,7 @@ body::before{
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 900px) {
   .hero {
     padding: 10px 4vw 80px;
   }
