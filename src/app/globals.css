@@ -16,7 +16,7 @@
   --ember:#D9531E; /* kept for backwards compat */
   --swiggy:#F6832C; /* kept for backwards compat */
   --zomato:#CB202D; /* kept for backwards compat */
-  --toing:#6B3FA0; /* kept for backwards compat */
+  --toing:#E91E63; /* updated to toing's pink */
 }
 *{box-sizing:border-box; margin:0; padding:0;}
 body{
@@ -808,7 +808,22 @@ nav.topbar{
 .l-call { background: linear-gradient(180deg, #f58220, #e65c00); }
 .l-swiggy { background: linear-gradient(180deg, #fc8019, #e06c11); }
 .l-zomato { background: #e23744; font-size: 16px; font-weight: 800; font-style: italic; }
-.l-toing { background: #6a2c91; }
+.l-toing { background: #008a27; overflow: hidden; }
+
+.toing-logo {
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  color: #FF4DE1;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  line-height: 1;
+  text-transform: lowercase;
+  transform: skewX(-8deg) rotate(-4deg);
+  -webkit-text-stroke: 1px black;
+  text-shadow: 1px 1px 0 #000, 2px 2px 0 #000, 3px 3px 0 #000, 4px 4px 0 #000, 5px 5px 0 #000;
+  display: inline-block;
+  margin-top: -2px;
+}
 
 .light-review-box {
   background: white;
@@ -818,6 +833,9 @@ nav.topbar{
   margin-top: 20px;
   margin-bottom: 40px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 16px;
   box-shadow: 0 6px 16px rgba(0,0,0,0.05);
 }
@@ -828,6 +846,9 @@ nav.topbar{
 }
 .review-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .review-content h3 {
   color: #a33232;
@@ -869,7 +890,7 @@ nav.topbar{
 
 .light-social-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   text-align: center;
 }
@@ -894,7 +915,8 @@ nav.topbar{
 }
 .s-icon.ig { background: radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
 .s-icon.fb { background: #1877F2; }
-.s-icon.th { background: #000; }
+.s-icon.th { background: #000; border-radius: 12px; }
+.s-icon.yt { background: #FF0000; }
 
 .s-link span {
   font-size: 11px;
