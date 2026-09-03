@@ -118,7 +118,6 @@ body::before{
   .review-content p { margin-bottom: 8px; }
   .star-icon { font-size: 32px; }
   
-  /* Height based scaling for smaller phones so everything fits down to the review box */
   @media (max-height: 700px) {
     .mobile-main-logo-container { margin-bottom: 0px; margin-top: 0px; }
     .mobile-huge-logo { width: 150px !important; }
@@ -137,6 +136,27 @@ body::before{
     .review-btn { padding: 6px 10px; font-size: 9px; }
     .s-icon { width: 36px; height: 36px; font-size: 18px; margin-bottom: 4px; }
     .l-btn { padding: 8px 4px; font-size: 10px; }
+  }
+
+  @media (max-height: 600px) {
+    .hero { padding: 5px 4vw 60px; }
+    .mobile-main-logo-container { margin-bottom: -5px; }
+    .mobile-huge-logo { width: 120px !important; }
+    .order-card.light-theme-card { padding: 8px; border-radius: 10px; }
+    .light-divider { margin: 4px 0; }
+    .light-divider span { font-size: 8px; padding: 0 4px; }
+    .direct-row { margin-bottom: 6px; }
+    .light-review-box { margin-top: 4px; margin-bottom: 10px; padding: 6px; gap: 8px; }
+    .order-btn, .app-btn { padding: 6px; font-size: 9px; border-radius: 4px; }
+    .order-now-heading h2 { font-size: 16px; }
+    .order-now-heading { margin-top: 2px; margin-bottom: 2px; }
+    .star-icon { font-size: 22px; }
+    .review-content h3 { font-size: 10px; margin-bottom: 1px; }
+    .review-content p { font-size: 9px; margin-bottom: 4px; line-height: 1.1; }
+    .review-btn { padding: 4px 8px; font-size: 8px; }
+    .l-btn { padding: 6px 2px; font-size: 9px; }
+    .l-btn .icon { font-size: 12px; margin-right: 4px; }
+    .l-btn svg { width: 12px; height: 12px; }
   }
 }
 
