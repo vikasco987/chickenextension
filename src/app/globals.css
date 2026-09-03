@@ -48,6 +48,7 @@ body::before{
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 20px;
+    align-items: flex-start; /* Fix centering overflow bug on small devices */
   }
   
   .mobile-main-logo-container {

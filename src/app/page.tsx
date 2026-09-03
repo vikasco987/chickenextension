@@ -13,6 +13,9 @@ export default function Home() {
   const [showBottomNav, setShowBottomNav] = useState(false);
 
   useEffect(() => {
+    // Ensure the page always starts at the top, fixing browsers opening halfway down
+    window.scrollTo(0, 0);
+
     const handleScroll = () => {
       if (window.scrollY > 150) {
         setShowBottomNav(true);
