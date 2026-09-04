@@ -4,10 +4,10 @@ import React, { useEffect, useState } from 'react';
 
 const DEFAULT_BG = "/images/hero_background_mughlai_1787676838358.png";
 
-export default function HeroWrapper({ children }: { children: React.ReactNode }) {
-  const [bgImage, setBgImage] = useState<string>(DEFAULT_BG);
-  const [bgImageMobile, setBgImageMobile] = useState<string>("/images/hero_mobile.jpg");
-  const [showFloating, setShowFloating] = useState<boolean>(false);
+export default function HeroWrapper({ children }) {
+  const [bgImage, setBgImage] = useState(DEFAULT_BG);
+  const [bgImageMobile, setBgImageMobile] = useState("/images/hero_mobile.jpg");
+  const [showFloating, setShowFloating] = useState(false);
 
   useEffect(() => {
     // Fetch global settings on mount
@@ -28,7 +28,7 @@ export default function HeroWrapper({ children }: { children: React.ReactNode })
         '--bg-desktop': bgImage === 'none' ? 'none' : `url('${bgImage}')`,
         '--bg-mobile': showFloating || bgImageMobile === 'none' ? 'none' : `url('${bgImageMobile}')`,
         transition: "background-image 0.5s ease-in-out"
-      } as React.CSSProperties}
+      }}
     >
       {children}
     </div>

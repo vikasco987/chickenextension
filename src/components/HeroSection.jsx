@@ -5,7 +5,7 @@ import { ArrowRight, Flame } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section 
+    <section
       className="relative min-h-[calc(100vh-76px)] overflow-hidden text-white"
       style={{
         background: `
@@ -16,7 +16,7 @@ export default function HeroSection() {
       }}
     >
       {/* ================= BACKGROUND DECORATION ================= */}
-      
+
       {/* Vibrant Coral Blobs */}
       <div className="pointer-events-none absolute -right-40 top-20 h-[600px] w-[600px] rounded-full bg-[#FF6B35]/10 blur-[120px]" />
       <div className="pointer-events-none absolute -left-40 bottom-0 h-[500px] w-[500px] rounded-full bg-[#E63946]/8 blur-[120px]" />
@@ -29,7 +29,7 @@ export default function HeroSection() {
         <span className="absolute left-[45%] top-[15%] text-[14px] text-[#E4572E] animate-float-fast opacity-50">✦</span>
         {/* Gold Star 3 */}
         <span className="absolute right-[35%] bottom-[20%] text-[24px] text-[#C89A4A] animate-float-slow opacity-40">✦</span>
-        
+
         {/* Tiny Dots */}
         <div className="absolute left-[30%] top-[60%] h-2 w-2 rounded-full bg-[#E63946] animate-pulse-slow blur-[1px]" />
         <div className="absolute right-[15%] top-[30%] h-3 w-3 rounded-full bg-[#F59E0B] animate-pulse-slow blur-[2px]" />
@@ -37,7 +37,7 @@ export default function HeroSection() {
       </div>
 
       {/* Noise Texture */}
-      <div 
+      <div
         className="pointer-events-none absolute inset-0 z-0 mix-blend-multiply opacity-[0.035]"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
@@ -67,7 +67,7 @@ export default function HeroSection() {
               <span className="mb-[6px] block text-[16px] font-bold uppercase tracking-[3px] text-[#D8C4BE]">
                 The Ultimate
               </span>
-              <span 
+              <span
                 className="block text-[clamp(64px,7.5vw,110px)] font-black text-transparent bg-clip-text"
                 style={{ backgroundImage: 'linear-gradient(90deg, #F04432 0%, #FF7518 100%)' }}
               >
@@ -153,7 +153,7 @@ export default function HeroSection() {
             <div className="absolute left-[-20px] top-[46px] z-20 max-w-[200px] rotate-[-3deg] scale-90 origin-bottom-left rounded-[18px] bg-gradient-to-br from-[#E4572E] to-[#B5231B] px-[22px] py-[16px] text-white shadow-[0_16px_30px_rgba(180,35,27,0.4),inset_0_1px_0_rgba(255,255,255,0.2)] animate-bob">
               <div className="mb-1.5 flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[1.5px] opacity-90">
                 <Flame size={14} fill="currentColor" />
-                Today's Special
+                Today&apos;s Special
               </div>
               <div className="mb-1 font-serif text-[20px] font-bold leading-tight">
                 Signature Chicken Kebab

@@ -5,15 +5,8 @@ import { QRCodeSVG } from 'qrcode.react';
 import * as htmlToImage from 'html-to-image';
 import { Download } from 'lucide-react';
 
-type DesignType = 'premium-dark' | 'clean-light' | 'modern-accent';
-
-interface QRGeneratorProps {
-  url: string;
-  design: DesignType;
-}
-
-export default function QRGenerator({ url, design }: QRGeneratorProps) {
-  const cardRef = useRef<HTMLDivElement>(null);
+export default function QRGenerator({ url, design }) {
+  const cardRef = useRef(null);
 
   const handleDownload = async () => {
     if (!cardRef.current) return;
@@ -61,7 +54,7 @@ export default function QRGenerator({ url, design }: QRGeneratorProps) {
 
 // --- DESIGNS ---
 
-function PremiumDarkCard({ url }: { url: string }) {
+function PremiumDarkCard({ url }) {
   return (
     <div style={{
       width: '620px',
@@ -151,7 +144,7 @@ function PremiumDarkCard({ url }: { url: string }) {
   );
 }
 
-function CleanLightCard({ url }: { url: string }) {
+function CleanLightCard({ url }) {
   return (
     <div style={{
       width: '620px',
@@ -215,7 +208,7 @@ function CleanLightCard({ url }: { url: string }) {
   );
 }
 
-function ModernAccentCard({ url }: { url: string }) {
+function ModernAccentCard({ url }) {
   return (
     <div style={{
       width: '620px',

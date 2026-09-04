@@ -65,7 +65,7 @@ const categories = [
 ];
 
 export default function CategorySection() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
@@ -83,7 +83,7 @@ export default function CategorySection() {
     return () => window.removeEventListener("resize", checkScroll);
   }, []);
 
-  const scroll = (direction: "left" | "right") => {
+  const scroll = (direction) => {
     if (scrollRef.current) {
       const scrollAmount = direction === "left" ? -320 : 320;
       scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });

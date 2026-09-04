@@ -88,15 +88,15 @@ const MOBILE_BACKGROUNDS = [
 ];
 
 export default function AdminPage() {
-  const [selectedBgId, setSelectedBgId] = useState<string>(BACKGROUNDS[0].id);
-  const [selectedMobileBgId, setSelectedMobileBgId] = useState<string>(MOBILE_BACKGROUNDS[0].id);
-  const [showFloating, setShowFloating] = useState<boolean>(false);
-  const [hideLogo, setHideLogo] = useState<boolean>(false);
-  const [logoSizeDesktop, setLogoSizeDesktop] = useState<number>(280);
-  const [logoSizeMobile, setLogoSizeMobile] = useState<number>(180);
-  const [activeTab, setActiveTab] = useState<'settings' | 'qrcode'>('settings');
-  const [qrUrl, setQrUrl] = useState<string>('https://chickenextension.vercel.app/');
-  const [qrDesign, setQrDesign] = useState<'premium-dark' | 'clean-light' | 'modern-accent'>('premium-dark');
+  const [selectedBgId, setSelectedBgId] = useState(BACKGROUNDS[0].id);
+  const [selectedMobileBgId, setSelectedMobileBgId] = useState(MOBILE_BACKGROUNDS[0].id);
+  const [showFloating, setShowFloating] = useState(false);
+  const [hideLogo, setHideLogo] = useState(false);
+  const [logoSizeDesktop, setLogoSizeDesktop] = useState(280);
+  const [logoSizeMobile, setLogoSizeMobile] = useState(180);
+  const [activeTab, setActiveTab] = useState('settings');
+  const [qrUrl, setQrUrl] = useState('https://chickenextension.vercel.app/');
+  const [qrDesign, setQrDesign] = useState('premium-dark');
 
   useEffect(() => {
     fetch('/api/settings?t=' + new Date().getTime(), { cache: 'no-store' })
@@ -118,7 +118,7 @@ export default function AdminPage() {
       .catch(console.error);
   }, []);
 
-  const handleSave = async (bgId: string) => {
+  const handleSave = async (bgId) => {
     const bg = BACKGROUNDS.find(b => b.id === bgId);
     if (!bg) return;
     
@@ -160,11 +160,11 @@ export default function AdminPage() {
     }
   };
 
-  const handleToggleFloating = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleToggleFloating = (e) => {
     setShowFloating(e.target.checked);
   };
 
-  const handleToggleHideLogo = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleToggleHideLogo = (e) => {
     setHideLogo(e.target.checked);
   };
 
@@ -344,7 +344,7 @@ export default function AdminPage() {
           <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold', color: '#555' }}>Select Design</label>
           <select 
             value={qrDesign}
-            onChange={(e) => setQrDesign(e.target.value as any)}
+            onChange={(e) => setQrDesign(e.target.value)}
             style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #ccc', fontSize: '16px' }}
           >
             <option value="premium-dark">Premium Dark (Best for night mode)</option>

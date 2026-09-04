@@ -29,7 +29,7 @@ export async function GET() {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(request) {
   try {
     const data = await request.json();
     fs.writeFileSync(SETTINGS_FILE, JSON.stringify(data, null, 2));
