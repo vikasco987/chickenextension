@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import HeroWrapper from '../components/HeroWrapper';
 import SplashScreen from '../components/SplashScreen';
 import Navbar from '../components/Navbar';
+import Abouts from '../components/Abouts';
 
 export default function Home() {
   const [showFloating, setShowFloating] = useState(false);
@@ -52,7 +53,7 @@ export default function Home() {
         <section className="hero">
           <div className="hero-grid">
 
-            <div className="hero-content-left relative z-10 pt-4 sm:pt-8">
+            <div className="hero-content-left relative z-10 pt-0">
               <div className="mobile-main-logo-container mobile-only text-center w-full flex justify-center">
                 <img src="/chicken-logo-transparent.png" alt="Chicken Extension" className="mobile-huge-logo" style={{ width: '240px', maxWidth: '100%', margin: '0 auto' }} />
               </div>
@@ -75,7 +76,7 @@ export default function Home() {
                 </div>
               )}
 
-              <div className="order-card light-theme-card">
+              <div className="order-card light-theme-card" id="order-now">
                 <div className="light-divider"><span>ORDER DIRECTLY</span></div>
                 <div className="light-grid-2">
                   <a href="https://wa.me/919315225535" target="_blank" rel="noopener" className="l-btn l-whatsapp">
@@ -88,10 +89,10 @@ export default function Home() {
 
                 <div className="light-divider"><span>ORDER ON DELIVERY APPS</span></div>
                 <div className="light-grid-3">
-                  <a href="https://www.swiggy.com/" target="_blank" rel="noopener" className="l-btn l-swiggy">
+                  <a href="https://www.swiggy.com/menu/1433132?source=sharing" target="_blank" rel="noopener" className="l-btn l-swiggy">
                     <span className="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" /></svg></span> SWIGGY
                   </a>
-                  <a href="https://www.zomato.com/" target="_blank" rel="noopener" className="l-btn l-zomato">
+                  <a href="https://zomato.onelink.me/xqzv/8hcgzzd0" target="_blank" rel="noopener" className="l-btn l-zomato">
                     zomato
                   </a>
                   <a href="#" target="_blank" rel="noopener" className="l-btn l-toing">
@@ -213,10 +214,16 @@ export default function Home() {
             <a href="#" className="social-item"><span className="social-icon ig">📷</span><span className="txt"><strong>Instagram</strong><span>Follow Us</span></span></a>
             <a href="#" className="social-item"><span className="social-icon fb">f</span><span className="txt"><strong>Facebook</strong><span>Like Our Page</span></span></a>
             <a href="#" className="social-item"><span className="social-icon th">@</span><span className="txt"><strong>Threads</strong><span>Join the Conversation</span></span></a>
+            <a href="https://youtube.com/@chickenextension?si=QFKfcNAB70SVrdXE" className="social-item" target="_blank" rel="noopener">
+              <span className="social-icon yt">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M21.58,7.2A2.71,2.71,0,0,0,19.67,5.3C17.96,4.83,12,4.83,12,4.83s-5.95,0-7.66.47A2.71,2.71,0,0,0,2.42,7.2C1.95,8.91,1.95,12,1.95,12s0,3.09.47,4.8a2.71,2.71,0,0,0,1.91,1.9c1.71.47,7.66.47,7.66.47s5.96,0,7.67-.47a2.71,2.71,0,0,0,1.91-1.9c.47-1.71.47-4.8.47-4.8s0-3.09-.47-4.8ZM10,15V9l6,3Z" /></svg>
+              </span>
+              <span className="txt"><strong>YouTube</strong><span>Subscribe</span></span>
+            </a>
           </div>
         </section>
 
-        <section className="info-strip">
+        <section className="info-strip" id="contact">
           <div className="info-item"><span className="ic">📍</span><div><div className="lbl">Address</div><div className="val">Shop No-C/F-36, Central Plaza, Sector-4, Near Madan Sweets, Greater Noida West, GB Nagar, U.P.-201318</div></div></div>
           <div className="info-item"><span className="ic">📞</span><div><div className="lbl">Call Us</div><div className="val">9315225535</div></div></div>
           <div className="info-item"><span className="ic">🕐</span><div><div className="lbl">Opening Hours</div><div className="val">11:00 AM – 11:30 PM<br />(All Days Open)</div></div></div>
@@ -226,7 +233,7 @@ export default function Home() {
       </div>
 
       <div className="wrap">
-        <section className="signatures">
+        <section className="signatures" id="menu">
           <div>
             <div className="sig-header">
               <h2>OUR SIGNATURES</h2>
@@ -247,6 +254,8 @@ export default function Home() {
           </div>
         </section>
       </div>
+
+      <Abouts />
     </>
   );
 }

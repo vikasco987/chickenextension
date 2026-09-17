@@ -31,6 +31,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-poppins), 'Poppins', sans-serif;
   background: var(--cream);
@@ -340,7 +344,7 @@ nav.topbar {
 
 .hero {
   position: relative;
-  padding: clamp(20px, 3vh, 40px) 6vw clamp(40px, 6vh, 90px);
+  padding: clamp(10px, 1vh, 20px) 6vw clamp(10px, 2vh, 30px);
 }
 
 .hero-grid {
@@ -350,7 +354,7 @@ nav.topbar {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: 30px;
   align-items: center;
 }
 
@@ -402,7 +406,7 @@ nav.topbar {
   text-transform: uppercase;
   color: #111111;
   /* Changed to black */
-  margin: 15px 0;
+  margin: 5px 0;
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
 }
 
@@ -461,8 +465,8 @@ nav.topbar {
   align-items: center;
   justify-content: center;
   gap: 15px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .order-now-heading h2 {
@@ -491,7 +495,7 @@ nav.topbar {
 .order-card {
   background: #fff;
   border-radius: 20px;
-  padding: 28px 30px 30px;
+  padding: 10px 14px;
   max-width: 480px;
   box-shadow: 0 26px 54px rgba(92, 22, 32, 0.14);
   border: 1px solid rgba(184, 134, 59, 0.18);
@@ -517,7 +521,7 @@ nav.topbar {
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 16px;
+  margin-bottom: 6px;
 }
 
 .order-divider::before,
@@ -532,8 +536,8 @@ nav.topbar {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 26px;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 
 .order-btn {
@@ -541,7 +545,7 @@ nav.topbar {
   align-items: center;
   justify-content: center;
   gap: 9px;
-  padding: 15px;
+  padding: 10px;
   border-radius: 12px;
   color: #fff;
   font-weight: 700;
@@ -569,7 +573,7 @@ nav.topbar {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 6px;
   flex-wrap: wrap;
 }
 
@@ -578,7 +582,7 @@ nav.topbar {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px;
+  padding: 8px;
   border-radius: 8px;
   font-weight: 800;
   font-size: 13.5px;
@@ -918,6 +922,10 @@ nav.topbar {
 
 .social-icon.th {
   background: #000;
+}
+
+.social-icon.yt {
+  background: #FF0000;
 }
 
 .social-item .txt strong {
@@ -1318,7 +1326,7 @@ nav.topbar {
 }
 
 .light-heading {
-  margin-top: 25px;
+  margin-top: 11px;
 }
 
 .light-heading h2 {
@@ -1331,7 +1339,7 @@ nav.topbar {
   /* Cream background */
   border: 1px solid #e1d3c0;
   border-radius: 12px;
-  padding: 20px;
+  padding: 10px;
   position: relative;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(92, 53, 31, 0.08);
@@ -1340,7 +1348,7 @@ nav.topbar {
 .light-divider {
   text-align: center;
   position: relative;
-  margin: 20px 0;
+  margin: 4px 0;
 }
 
 .light-divider::before {
@@ -1368,20 +1376,20 @@ nav.topbar {
 .light-grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 8px;
 }
 
 .light-grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 6px;
 }
 
 .l-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 6px;
+  padding: 6px 2px;
   border-radius: 8px;
   font-weight: 700;
   color: white;
@@ -1438,14 +1446,14 @@ nav.topbar {
   background: white;
   border: 1px solid #eaeaea;
   border-radius: 12px;
-  padding: 20px 16px;
-  margin-top: 20px;
-  margin-bottom: 40px;
+  padding: 8px 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 16px;
+  gap: 8px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
 }
 
@@ -1472,7 +1480,7 @@ nav.topbar {
 .review-content p {
   font-size: 12px;
   color: #555;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
   line-height: 1.4;
 }
 
@@ -1485,7 +1493,7 @@ nav.topbar {
   color: white;
   font-size: 11px;
   font-weight: 700;
-  padding: 10px 14px;
+  padding: 6px 10px;
   border-radius: 6px;
   text-decoration: none;
 }
@@ -1507,7 +1515,7 @@ nav.topbar {
 .light-social-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 6px;
   text-align: center;
 }
 
@@ -1520,15 +1528,15 @@ nav.topbar {
 }
 
 .s-icon {
-  width: 48px;
-  height: 48px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 24px;
-  margin-bottom: 6px;
+  font-size: 16px;
+  margin-bottom: 4px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -1561,8 +1569,8 @@ nav.topbar {
   text-align: center;
   border-top: 1px solid #d6c6b3;
   border-bottom: 1px solid #d6c6b3;
-  margin-top: 25px;
-  padding: 15px 0;
+  margin-top: 10px;
+  padding: 8px 0;
 }
 
 .info-item {
@@ -1579,8 +1587,8 @@ nav.topbar {
 }
 
 .info-item .i-icon {
-  font-size: 20px;
-  margin-bottom: 4px;
+  font-size: 14px;
+  margin-bottom: 2px;
   color: #5c351f;
 }
 

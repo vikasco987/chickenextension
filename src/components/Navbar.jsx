@@ -11,7 +11,7 @@ export default function Navbar() {
 
         {/* BRAND LOGO */}
         <a href="#" className="group flex items-center transition-transform duration-300 hover:scale-105 shrink-0 z-10">
-          <div className="flex items-center justify-center w-[120px] xl:w-[160px]">
+          <div className="flex items-center justify-center w-[135px]">
             <img src="/chicken-logo-transparent.png" alt="Chicken Extension Logo" style={{ width: '100%' }} className="h-auto object-contain" />
           </div>
         </a>
