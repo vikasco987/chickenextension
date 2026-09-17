@@ -8,6 +8,9 @@ const poppins = Poppins({ weight: ["400", "500", "600", "700", "800"], subsets: 
 export const metadata = {
   title: "Chicken Extension — Authentic Mughlai Kitchen",
   description: "Authentic Mughlai Kitchen",
+  icons: {
+    icon: "/chicken-logo-transparent.png",
+  },
 };
 
 export default function RootLayout({ children }) {
